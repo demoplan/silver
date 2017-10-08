@@ -1,0 +1,54 @@
+F:\Stock Management\Soft-JEWELS\bin\x86\Debug\StockManagement.exe.config
+F:\Stock Management\Soft-JEWELS\bin\x86\Debug\StockManagement.exe.manifest
+F:\Stock Management\Soft-JEWELS\bin\x86\Debug\StockManagement.application
+F:\Stock Management\Soft-JEWELS\bin\x86\Debug\StockManagement.exe
+F:\Stock Management\Soft-JEWELS\bin\x86\Debug\StockManagement.pdb
+F:\Stock Management\Soft-JEWELS\bin\x86\Debug\CalendarClock.dll
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Main.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Properties.Resources.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Report.CrystalReportViewer.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Report.DailyStock.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Report.EmptyTag.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Report.ReportView.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Report.StockSummary.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Transaction.Import.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Transaction.Master.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Transaction.ModifyStockOut.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Transaction.ModifyStockIn.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Transaction.StockIN.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.Transaction.StockOUT.resources
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.csproj.GenerateResource.Cache
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.exe.manifest
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.application
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.exe
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.pdb
+F:\Stock Management\Soft-JEWELS\obj\x86\Debug\StockManagement.csprojResolveAssemblyReference.cache
+F:\Stock Management - ManojJijaji\StockManagement\bin\x86\Debug\StockManagement.exe.config
+F:\Stock Management - ManojJijaji\StockManagement\bin\x86\Debug\StockManagement.exe.manifest
+F:\Stock Management - ManojJijaji\StockManagement\bin\x86\Debug\StockManagement.application
+F:\Stock Management - ManojJijaji\StockManagement\bin\x86\Debug\StockManagement.exe
+F:\Stock Management - ManojJijaji\StockManagement\bin\x86\Debug\StockManagement.pdb
+F:\Stock Management - ManojJijaji\StockManagement\bin\x86\Debug\CalendarClock.dll
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Main.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Master.GoldRateMaster.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Properties.Resources.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Report.CrystalReportViewer.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Report.DailyStock.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Report.EmptyTag.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Report.ReportView.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Report.InvoicePrinting.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Report.StockSummary.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Transaction.Import.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Transaction.SaleItemInfo.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Transaction.Master.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Transaction.ModifyStockOut.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Transaction.ModifyStockIn.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Transaction.StockIN.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Transaction.Sales.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.Transaction.StockOUT.resources
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.csproj.GenerateResource.Cache
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.exe.manifest
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.application
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.exe
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.pdb
+F:\Stock Management - ManojJijaji\StockManagement\obj\x86\Debug\StockManagement.csprojResolveAssemblyReference.cache

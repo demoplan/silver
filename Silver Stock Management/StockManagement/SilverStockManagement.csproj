@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31BBF485-EB37-4E5A-87D1-28AEEFFDEC35}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StockManagement</RootNamespace>
+    <AssemblyName>StockManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsUrl>F:\Stock Management\Soft-JEWELS\bin\x86</BootstrapperComponentsUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8B5F6B15A40FB3B90068E0641EB04DEE83522784</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>StockManagement_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>StockManagement.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CalendarClock">
+      <HintPath>..\Export DLL\CalendarClock.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=8.8.0.0, Culture=neutral, PublicKeyToken=e116d99a00eca71b">
+      <HintPath>..\Export DLL\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\Model\CustomerM.cs">
+      <DependentUpon>SilverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\InOut.cs">
+      <DependentUpon>SilverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\MetalM.cs">
+      <DependentUpon>SilverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\ProductM.cs">
+      <DependentUpon>SilverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\Receipt.cs">
+      <DependentUpon>SilverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\SilverModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SilverModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\SilverModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SilverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\SilverModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SilverModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\StockInfo.cs">
+      <DependentUpon>SilverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Master\GoldRateMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Master\GoldRateMaster.Designer.cs">
+      <DependentUpon>GoldRateMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\CrystalReport\InvoiceWithoutPicture.cs">
+      <DependentUpon>InvoiceWithoutPicture.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\CrystalReport\InvoiceWithPicture.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvoiceWithPicture.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\DataSetSchema.cs">
+      <DependentUpon>DataSetSchema.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\InvoicePrinting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\InvoicePrinting.Designer.cs">
+      <DependentUpon>InvoicePrinting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\CameraCaptureUI.cs" />
+    <Compile Include="UI\Purchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Purchase.Designer.cs">
+      <DependentUpon>Purchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Receipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Receipt.Designer.cs">
+      <DependentUpon>Receipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\SaleItemInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction\SaleItemInfo.Designer.cs">
+      <DependentUpon>SaleItemInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\Sales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction\Sales.Designer.cs">
+      <DependentUpon>Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\MasterNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC\MasterNew.Designer.cs">
+      <DependentUpon>MasterNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\uscArtisanMaster.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\uscArtisanMaster.Designer.cs">
+      <DependentUpon>uscArtisanMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\uscDealerMaster.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\uscDealerMaster.Designer.cs">
+      <DependentUpon>uscDealerMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\uscMetalMaster.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\uscMetalMaster.Designer.cs">
+      <DependentUpon>uscMetalMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\uscCustomerMaster.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\uscCustomerMaster.Designer.cs">
+      <DependentUpon>uscCustomerMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\uscProductMaster.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\uscProductMaster.Designer.cs">
+      <DependentUpon>uscProductMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\GlobalVar.cs" />
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\CrystalReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\CrystalReportViewer.Designer.cs">
+      <DependentUpon>CrystalReportViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\CrystalReport\StockSummaryReportWithPicture.cs">
+      <DependentUpon>StockSummaryReportWithPicture.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\CrystalReport\StockSummaryReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockSummaryReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\CrystalReport\SubItemReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SubItemReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\DailyStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\DailyStock.Designer.cs">
+      <DependentUpon>DailyStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\DataSetSchema.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetSchema.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Report\EmptyTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\EmptyTag.Designer.cs">
+      <DependentUpon>EmptyTag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\ReportView.Designer.cs">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\StockSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\StockSummary.Designer.cs">
+      <DependentUpon>StockSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\Import.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction\Import.Designer.cs">
+      <DependentUpon>Import.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\Master.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction\Master.Designer.cs">
+      <DependentUpon>Master.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\ModifyStockOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction\ModifyStockOut.Designer.cs">
+      <DependentUpon>ModifyStockOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\ModifyStockIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction\ModifyStockIn.Designer.cs">
+      <DependentUpon>ModifyStockIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\StockIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction\StockIN.Designer.cs">
+      <DependentUpon>StockIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\StockOUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Transaction\StockOUT.Designer.cs">
+      <DependentUpon>StockOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\dbUtils.cs" />
+    <Compile Include="Utils\DGVPrinter.cs" />
+    <Compile Include="Utils\GroupInfo.cs" />
+    <Compile Include="Utils\ItemInfo.cs" />
+    <Compile Include="Utils\LoggingManager.cs" />
+    <Compile Include="Utils\SaleBillInfo.cs" />
+    <Compile Include="Utils\SalesLineItemDetail.cs" />
+    <Compile Include="Utils\StoneInfo.cs" />
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master\GoldRateMaster.resx">
+      <DependentUpon>GoldRateMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Report\CrystalReportViewer.resx">
+      <DependentUpon>CrystalReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReport\InvoiceWithoutPicture.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InvoiceWithoutPicture.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReport\InvoiceWithPicture.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InvoiceWithPicture.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReport\StockSummaryReportWithPicture.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StockSummaryReportWithPicture.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReport\StockSummaryReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StockSummaryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReport\SubItemReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SubItemReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\DailyStock.resx">
+      <DependentUpon>DailyStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\EmptyTag.resx">
+      <DependentUpon>EmptyTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportView.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\InvoicePrinting.resx">
+      <DependentUpon>InvoicePrinting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\StockSummary.resx">
+      <DependentUpon>StockSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction\Import.resx">
+      <DependentUpon>Import.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Purchase.resx">
+      <DependentUpon>Purchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Receipt.resx">
+      <DependentUpon>Receipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction\SaleItemInfo.resx">
+      <DependentUpon>SaleItemInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction\Master.resx">
+      <DependentUpon>Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction\ModifyStockOut.resx">
+      <DependentUpon>ModifyStockOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction\ModifyStockIn.resx">
+      <DependentUpon>ModifyStockIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction\StockIN.resx">
+      <DependentUpon>StockIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction\Sales.resx">
+      <DependentUpon>Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Transaction\StockOUT.resx">
+      <DependentUpon>StockOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\MasterNew.resx">
+      <DependentUpon>MasterNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\uscArtisanMaster.resx">
+      <DependentUpon>uscArtisanMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\uscDealerMaster.resx">
+      <DependentUpon>uscDealerMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\uscMetalMaster.resx">
+      <DependentUpon>uscMetalMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\uscCustomerMaster.resx">
+      <DependentUpon>uscCustomerMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\uscProductMaster.resx">
+      <DependentUpon>uscProductMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="DAL\Model\SilverModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SilverModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DAL\Model\SilverModel.edmx.diagram">
+      <DependentUpon>SilverModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Report\DataSetSchema.xsc">
+      <DependentUpon>DataSetSchema.xsd</DependentUpon>
+    </None>
+    <None Include="Report\DataSetSchema.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetSchema.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\DataSetSchema.xss">
+      <DependentUpon>DataSetSchema.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\appbar.xbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.window.minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.clipboard.variant.edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.disk.download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.book.hardcover.open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.barcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.cog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.clipboard.variant.text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.marketplace.old.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.man.suitcase.fast.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stockmgmtlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\appbar.image.gallery1.png" />
+    <None Include="Resources\appbar.tag.label.png" />
+    <None Include="Resources\appbar.save.png" />
+    <None Include="Resources\appbar.printer.text.png" />
+    <None Include="Resources\appbar.printer.png" />
+    <None Include="Resources\dailyReport.PNG" />
+    <None Include="Resources\background-blue.jpg" />
+    <None Include="Resources\appbar.magnify.png" />
+    <None Include="Resources\appbar.image.night.portrait.png" />
+    <None Include="Resources\appbar.image.gallery.png" />
+    <None Include="Resources\appbar.checkmark.png" />
+    <None Include="Resources\appbar.checkmark.cross.png" />
+    <None Include="Resources\appbar.cabinet.in.png" />
+    <None Include="Resources\appbar.checkmark.pencil.top.png" />
+    <None Include="Resources\appbar.cell.insert.below.png" />
+    <Content Include="DAL\Model\SilverModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SilverModel.edmx</DependentUpon>
+      <LastGenOutput>SilverModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\Model\SilverModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SilverModel.edmx</DependentUpon>
+      <LastGenOutput>SilverModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Resources\appbar.close.png" />
+    <None Include="Resources\appbar.stock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SilverModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CustomerM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="CustName" Type="varchar" MaxLength="100" />
+          <Property Name="CustAddress" Type="varchar" MaxLength="250" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="PAN" Type="varchar" MaxLength="10" />
+          <Property Name="CustType" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="InOut">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeqNo" Type="int" Nullable="false" />
+          <Property Name="TDate" Type="datetime" />
+          <Property Name="LCode" Type="varchar" MaxLength="50" />
+          <Property Name="PCode" Type="varchar" MaxLength="50" />
+          <Property Name="MetalType" Type="varchar" MaxLength="250" />
+          <Property Name="TType" Type="varchar" MaxLength="3" />
+          <Property Name="RefVNo" Type="int" />
+          <Property Name="Pcs" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="Rate" Type="decimal" Precision="16" Scale="4" />
+        </EntityType>
+        <EntityType Name="MetalM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MetalDesc" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ProductM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemCode" Type="varchar" MaxLength="250" />
+          <Property Name="PName" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VNo" Type="int" />
+          <Property Name="VDate" Type="datetime" />
+          <Property Name="LCode" Type="varchar" MaxLength="50" />
+          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="MakingRate" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="MakingCharge" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="RoundOff" Type="int" />
+          <Property Name="TotalAmt" Type="decimal" Precision="16" Scale="4" />
+        </EntityType>
+        <EntityType Name="StockInfo">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeqNo" Type="int" Nullable="false" />
+          <Property Name="TDate" Type="datetime" />
+          <Property Name="LCode" Type="varchar" MaxLength="50" />
+          <Property Name="PCode" Type="varchar" MaxLength="50" />
+          <Property Name="TagNo" Type="varchar" MaxLength="50" />
+          <Property Name="MetalType" Type="varchar" MaxLength="250" />
+          <Property Name="InType" Type="varchar" MaxLength="10" />
+          <Property Name="RefVNo" Type="int" />
+          <Property Name="Pcs" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="Rate" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="Photo" Type="varchar" MaxLength="200" />
+          <Property Name="OutDate" Type="datetime" />
+          <Property Name="OutBillNo" Type="int" />
+          <Property Name="OutType" Type="varchar" MaxLength="10" />
+          <Property Name="Remarks" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityContainer Name="SilverModelStoreContainer">
+          <EntitySet Name="CustomerM" EntityType="Self.CustomerM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InOut" EntityType="Self.InOut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetalM" EntityType="Self.MetalM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductM" EntityType="Self.ProductM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockInfo" EntityType="Self.StockInfo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SilverModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CustomerM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CustName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CustAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CustType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MetalM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MetalDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ProductM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="SilverEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerMs" EntityType="Self.CustomerM" />
+          <EntitySet Name="MetalMs" EntityType="Self.MetalM" />
+          <EntitySet Name="ProductMs" EntityType="Self.ProductM" />
+          <EntitySet Name="InOuts" EntityType="SilverModel.InOut" />
+          <EntitySet Name="Receipts" EntityType="SilverModel.Receipt" />
+          <EntitySet Name="StockInfoes" EntityType="SilverModel.StockInfo" />
+        </EntityContainer>
+        <EntityType Name="InOut">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeqNo" Type="Int32" Nullable="false" />
+          <Property Name="TDate" Type="DateTime" Precision="3" />
+          <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetalType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TType" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="RefVNo" Type="Int32" />
+          <Property Name="Pcs" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="Rate" Type="Decimal" Precision="16" Scale="4" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VNo" Type="Int32" />
+          <Property Name="VDate" Type="DateTime" Precision="3" />
+          <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="MakingRate" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="MakingCharge" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="RoundOff" Type="Int32" />
+          <Property Name="TotalAmt" Type="Decimal" Precision="16" Scale="4" />
+        </EntityType>
+        <EntityType Name="StockInfo">
+          <Key>
+            <PropertyRef Name="TID" />
+          </Key>
+          <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeqNo" Type="Int32" Nullable="false" />
+          <Property Name="TDate" Type="DateTime" Precision="3" />
+          <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TagNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MetalType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="InType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RefVNo" Type="Int32" />
+          <Property Name="Pcs" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="Rate" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OutDate" Type="DateTime" Precision="3" />
+          <Property Name="OutBillNo" Type="Int32" />
+          <Property Name="OutType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SilverModelStoreContainer" CdmEntityContainer="SilverEntities">
+          <EntitySetMapping Name="CustomerMs">
+            <EntityTypeMapping TypeName="SilverModel.CustomerM">
+              <MappingFragment StoreEntitySet="CustomerM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CustName" ColumnName="CustName" />
+                <ScalarProperty Name="CustAddress" ColumnName="CustAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PAN" ColumnName="PAN" />
+                <ScalarProperty Name="CustType" ColumnName="CustType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetalMs">
+            <EntityTypeMapping TypeName="SilverModel.MetalM">
+              <MappingFragment StoreEntitySet="MetalM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MetalDesc" ColumnName="MetalDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductMs">
+            <EntityTypeMapping TypeName="SilverModel.ProductM">
+              <MappingFragment StoreEntitySet="ProductM">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InOuts">
+            <EntityTypeMapping TypeName="SilverModel.InOut">
+              <MappingFragment StoreEntitySet="InOut">
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+                <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+                <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
+                <ScalarProperty Name="TType" ColumnName="TType" />
+                <ScalarProperty Name="MetalType" ColumnName="MetalType" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="LCode" ColumnName="LCode" />
+                <ScalarProperty Name="TDate" ColumnName="TDate" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receipts">
+            <EntityTypeMapping TypeName="SilverModel.Receipt">
+              <MappingFragment StoreEntitySet="Receipt">
+                <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
+                <ScalarProperty Name="RoundOff" ColumnName="RoundOff" />
+                <ScalarProperty Name="MakingCharge" ColumnName="MakingCharge" />
+                <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
+                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+                <ScalarProperty Name="LCode" ColumnName="LCode" />
+                <ScalarProperty Name="VDate" ColumnName="VDate" />
+                <ScalarProperty Name="VNo" ColumnName="VNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockInfoes">
+            <EntityTypeMapping TypeName="SilverModel.StockInfo">
+              <MappingFragment StoreEntitySet="StockInfo">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="OutType" ColumnName="OutType" />
+                <ScalarProperty Name="OutBillNo" ColumnName="OutBillNo" />
+                <ScalarProperty Name="OutDate" ColumnName="OutDate" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+                <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+                <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
+                <ScalarProperty Name="InType" ColumnName="InType" />
+                <ScalarProperty Name="MetalType" ColumnName="MetalType" />
+                <ScalarProperty Name="TagNo" ColumnName="TagNo" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="LCode" ColumnName="LCode" />
+                <ScalarProperty Name="TDate" ColumnName="TDate" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+                <ScalarProperty Name="TID" ColumnName="TID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

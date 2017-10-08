@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SilverModelStoreContainer" CdmEntityContainer="SilverEntities">
+    <EntitySetMapping Name="CustomerMs">
+      <EntityTypeMapping TypeName="SilverModel.CustomerM">
+        <MappingFragment StoreEntitySet="CustomerM">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CustName" ColumnName="CustName" />
+          <ScalarProperty Name="CustAddress" ColumnName="CustAddress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="CustType" ColumnName="CustType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetalMs">
+      <EntityTypeMapping TypeName="SilverModel.MetalM">
+        <MappingFragment StoreEntitySet="MetalM">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MetalDesc" ColumnName="MetalDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductMs">
+      <EntityTypeMapping TypeName="SilverModel.ProductM">
+        <MappingFragment StoreEntitySet="ProductM">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InOuts">
+      <EntityTypeMapping TypeName="SilverModel.InOut">
+        <MappingFragment StoreEntitySet="InOut">
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+          <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+          <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+          <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
+          <ScalarProperty Name="TType" ColumnName="TType" />
+          <ScalarProperty Name="MetalType" ColumnName="MetalType" />
+          <ScalarProperty Name="PCode" ColumnName="PCode" />
+          <ScalarProperty Name="LCode" ColumnName="LCode" />
+          <ScalarProperty Name="TDate" ColumnName="TDate" />
+          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Receipts">
+      <EntityTypeMapping TypeName="SilverModel.Receipt">
+        <MappingFragment StoreEntitySet="Receipt">
+          <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
+          <ScalarProperty Name="RoundOff" ColumnName="RoundOff" />
+          <ScalarProperty Name="MakingCharge" ColumnName="MakingCharge" />
+          <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
+          <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+          <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+          <ScalarProperty Name="LCode" ColumnName="LCode" />
+          <ScalarProperty Name="VDate" ColumnName="VDate" />
+          <ScalarProperty Name="VNo" ColumnName="VNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockInfoes">
+      <EntityTypeMapping TypeName="SilverModel.StockInfo">
+        <MappingFragment StoreEntitySet="StockInfo">
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="OutType" ColumnName="OutType" />
+          <ScalarProperty Name="OutBillNo" ColumnName="OutBillNo" />
+          <ScalarProperty Name="OutDate" ColumnName="OutDate" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+          <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+          <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+          <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
+          <ScalarProperty Name="InType" ColumnName="InType" />
+          <ScalarProperty Name="MetalType" ColumnName="MetalType" />
+          <ScalarProperty Name="TagNo" ColumnName="TagNo" />
+          <ScalarProperty Name="PCode" ColumnName="PCode" />
+          <ScalarProperty Name="LCode" ColumnName="LCode" />
+          <ScalarProperty Name="TDate" ColumnName="TDate" />
+          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+          <ScalarProperty Name="TID" ColumnName="TID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
