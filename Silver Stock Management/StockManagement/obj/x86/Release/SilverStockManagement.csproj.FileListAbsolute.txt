@@ -103,3 +103,44 @@ G:\Manish\Silver Stock Management\Silver Stock Management\StockManagement\obj\x8
 G:\Manish\Silver Stock Management\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.application
 G:\Manish\Silver Stock Management\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.exe
 G:\Manish\Silver Stock Management\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.pdb
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\StockManagement.exe.config
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.exe
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.pdb
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\StockManagement.exe.manifest
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\StockManagement.application
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\StockManagement.exe
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\StockManagement.pdb
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\CalendarClock.dll
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\EntityFramework.dll
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\EntityFramework.SqlServer.dll
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\EntityFramework.xml
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\bin\x86\Release\EntityFramework.SqlServer.xml
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\SilverStockManagement.csprojResolveAssemblyReference.cache
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Main.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Master.GoldRateMaster.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Properties.Resources.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Report.CrystalReportViewer.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Report.DailyStock.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Report.EmptyTag.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Report.ReportView.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Report.InvoicePrinting.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Report.StockSummary.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Transaction.Import.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.UI.Purchase.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.UI.Receipt.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Transaction.SaleItemInfo.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Transaction.Master.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Transaction.ModifyStockOut.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Transaction.ModifyStockIn.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Transaction.StockIN.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Transaction.Sales.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.Transaction.StockOUT.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.UC.MasterNew.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.UC.uscArtisanMaster.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.UC.uscDealerMaster.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.UC.uscMetalMaster.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.UC.uscCustomerMaster.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.UC.uscProductMaster.resources
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\SilverStockManagement.csproj.GenerateResource.Cache
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.exe.manifest
+I:\Disk 2\silver_git\silver\Silver Stock Management\StockManagement\obj\x86\Release\StockManagement.application

@@ -2,6 +2,7 @@
 using StockManagement.Master;
 using StockManagement.Report;
 using StockManagement.Transaction;
+using StockManagement.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,8 +37,8 @@ namespace StockManagement
         }
         private void TransactionEntry(object sender, EventArgs e)
         {
-            Sales salesForm = new Sales();
-            salesForm.ShowDialog();
+            Purchase purchaseForm = new Purchase();
+            purchaseForm.Show();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

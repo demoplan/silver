@@ -28,7 +28,6 @@ namespace StockManagement.UI
         {
             try
             {
-                this.dgvLP.ReadOnly = true;
                 this.dgvSP.ReadOnly = true;
                 dtDate.Value = DateTime.Now;
 
@@ -50,19 +49,14 @@ namespace StockManagement.UI
                     cmbCustomer.DisplayMember = "Name";
                     cmbCustomer.ValueMember = "ID";
 
-                    //Bind Product Combobox LP
-                    cmbLPCode.DataSource = prodSource;
-                    cmbLPCode.DisplayMember = "Name";
-                    cmbLPCode.ValueMember = "ID";
 
                     //Bind Product Combobox SP
-                    cmbSPCode.DataSource = prodSource;
-                    cmbSPCode.DisplayMember = "Name";
-                    cmbSPCode.ValueMember = "ID";
+                    cmbProductCode.DataSource = prodSource;
+                    cmbProductCode.DisplayMember = "Name";
+                    cmbProductCode.ValueMember = "ID";
 
                     var bindingListLP = new BindingList<InOut>(gridLP);
                     var sourceLP = new BindingSource(bindingListLP, null);
-                    dgvLP.DataSource = sourceLP;
 
                     var bindingListSP = new BindingList<StockInfo>(gridSP);
                     var sourceSP = new BindingSource(bindingListSP, null);
@@ -83,20 +77,13 @@ namespace StockManagement.UI
         private void btnSave_Click(object sender, EventArgs e)
         {
             #region Calculation logic for GrossWT,NetWt,NetAmount
-            BindingSource bslistLP = (BindingSource)dgvLP.DataSource;
-            BindingList<InOut> listLP = (BindingList<InOut>)bslistLP.DataSource;
 
             BindingSource bslistSP = (BindingSource)dgvSP.DataSource;
             BindingList<StockInfo> listSP = (BindingList<StockInfo>)bslistSP.DataSource;
 
             decimal totalGsWtLP = 0, totalNetWtLP = 0, totalRateLP = 0;
             decimal?    totalNetAmtLP=0;
-            foreach (InOut inout in listLP)
-            {
-                //totalGsWtLP = totalGsWtLP + Convert.ToDecimal(inout.GrossWt);
-                //totalNetWtLP = totalNetWtLP + Convert.ToDecimal(inout.NetWt);
-                totalNetAmtLP = totalNetAmtLP.Value + ((inout.Pcs != null || inout.Pcs > 0) ? inout.Rate * inout.Pcs : inout.Rate * inout.GrossWt);
-            }
+            
 
             decimal totalGsWtSP = 0, totalNetWtSP = 0, totalRateSP = 0;
             decimal? totalNetAmtSP = 0;
@@ -117,7 +104,7 @@ namespace StockManagement.UI
                 objRec.VDate = dtDate.Value;
                 objRec.LCode = Convert.ToString(cmbCustomer.SelectedValue);
                 objRec.GrossWt = Convert.ToDecimal(tLPGsWt.Text.Trim()) + Convert.ToDecimal(tSPGsWt.Text.Trim());
-                objRec.NetWt = Convert.ToDecimal(tLPNetWt.Text.Trim()) + Convert.ToDecimal(tSPNetWt.Text.Trim());                
+                objRec.NetWt = Convert.ToDecimal(tLPNetWt.Text.Trim());           
                 objRec.MakingRate = 100;
                 objRec.MakingCharge = 100;
                 objRec.RoundOff = 1;
@@ -125,11 +112,11 @@ namespace StockManagement.UI
                 entities.Receipts.Add(objRec);
 
                 //Adding in InOut   
-                foreach (InOut inout in listLP)
-                {
-                    inout.RefVNo = voucherNo;
-                    entities.InOuts.Add(inout);
-                }
+                //foreach (InOut inout in listLP)
+                //{
+                //    inout.RefVNo = voucherNo;
+                //    entities.InOuts.Add(inout);
+                //}
 
                 //Adding in StockInfo
                 foreach (StockInfo stockInfo in listSP)
@@ -144,28 +131,7 @@ namespace StockManagement.UI
 
         }
 
-        private void pbLPAdd_Click(object sender, EventArgs e)
-        {            
-            BindingSource bslistLP = (BindingSource)dgvLP.DataSource;
-            BindingList<InOut> listLP = (BindingList<InOut>)bslistLP.DataSource;
-            InOut inOut = new InOut();
-            inOut.TDate = dtDate.Value;
-            inOut.SeqNo = listLP.Count + 1;
-            inOut.LCode = Convert.ToString(cmbCustomer.SelectedValue);
-            inOut.MetalType = Convert.ToString(cmbLPCode.SelectedValue);
-            inOut.PCode = Convert.ToString(cmbLPCode.SelectedValue);
-            inOut.TType = "IN";
-            inOut.RefVNo = 0;
-            inOut.Pcs = Convert.ToDecimal(txtLPPcs.Text.Trim());
-            inOut.GrossWt = Convert.ToDecimal(txtLPGsWt.Text.Trim());
-            inOut.NetWt = Convert.ToDecimal(txtLPNetWt.Text.Trim());
-            inOut.Rate = Convert.ToDecimal(txtLPRate.Text.Trim());
-            listLP.Add(inOut);
-
-            var bindingList = new BindingList<InOut>(listLP);
-            var source = new BindingSource(bindingList, null);
-            dgvLP.DataSource = source;
-        }
+       
 
         private void pbSPAdd_Click(object sender, EventArgs e)
         {
@@ -175,8 +141,8 @@ namespace StockManagement.UI
             stockInfo.TDate = dtDate.Value;
             stockInfo.SeqNo = listSP.Count + 1;
             stockInfo.LCode = Convert.ToString(cmbCustomer.SelectedValue);
-            stockInfo.MetalType = Convert.ToString(cmbLPCode.SelectedValue);
-            stockInfo.PCode = Convert.ToString(cmbSPCode.SelectedValue);
+            stockInfo.MetalType = null;
+            stockInfo.PCode = Convert.ToString(cmbProductCode.SelectedValue);
             stockInfo.TagNo = txtSPBarCode.Text.Trim();
             stockInfo.InType = "IN";
             stockInfo.RefVNo = 0;
@@ -193,21 +159,6 @@ namespace StockManagement.UI
 
         }
 
-        private void dgvLP_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            BindingSource bslistLP = (BindingSource)dgvLP.DataSource;
-            BindingList<InOut> listLP = (BindingList<InOut>)bslistLP.DataSource;
-            decimal totalGsWt = 0,totalNetWt=0,totalRate=0;
-            foreach(InOut inout in listLP)
-            {
-                totalGsWt = totalGsWt + Convert.ToDecimal(inout.GrossWt);
-                totalNetWt = totalNetWt + Convert.ToDecimal(inout.NetWt);
-                //totalRate = totalRate + Convert.ToDecimal(txtLPRate.Text.Trim());
-            }
-            tLPGsWt.Text = Convert.ToString(totalGsWt);
-            tLPNetWt.Text = Convert.ToString(totalNetWt);
-        }
-
         private void dgvSP_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             BindingSource bslistSP = (BindingSource)dgvSP.DataSource;
@@ -220,7 +171,6 @@ namespace StockManagement.UI
                 //totalRate = totalRate + Convert.ToDecimal(txtLPRate.Text.Trim());
             }
             tSPGsWt.Text = Convert.ToString(totalGsWt);
-            tSPNetWt.Text = Convert.ToString(totalNetWt);
         }
 
         private void pbSPAddImage_Click(object sender, EventArgs e)

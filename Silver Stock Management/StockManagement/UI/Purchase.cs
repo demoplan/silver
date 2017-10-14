@@ -38,8 +38,6 @@ namespace StockManagement.UI
             this.Left = 0;
             this.Top = 150;
             this.Width = GlobalVar.windowsWidth;
-            cmbProductCode.SelectAll();
-            this.ActiveControl = cmbProductCode;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -84,11 +82,6 @@ namespace StockManagement.UI
                 {
                     dt.Rows.Add(drStone.GetInt32(0), drStone.GetString(1));
                 }
-                cmbProductCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                cmbProductCode.AutoCompleteSource = AutoCompleteSource.ListItems;
-                cmbProductCode.DisplayMember = "DESCRIPTION";
-                cmbProductCode.ValueMember = "ID";
-                cmbProductCode.DataSource = dt;
 
             }
             catch (Exception e)
