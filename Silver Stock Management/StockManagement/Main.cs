@@ -17,12 +17,17 @@ namespace StockManagement
 {
     public partial class Main : Form
     {
+        DAL.Model.SilverEntities entities;
         public Main()
         {
             InitializeComponent();
             setFullScreen();
             setMainPanelPosition();
             LoggingManager.settingLogLevel = 4;
+            using (entities = new DAL.Model.SilverEntities())
+            {
+                var fixLoadIssue = (from ent in entities.CustomerMs select ent).FirstOrDefault();
+            }
         }
         private void setFullScreen()
         {
