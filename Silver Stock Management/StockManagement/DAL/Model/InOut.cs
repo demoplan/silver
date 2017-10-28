@@ -17,14 +17,17 @@ namespace StockManagement.DAL.Model
         public int TID { get; set; }
         public int SeqNo { get; set; }
         public Nullable<System.DateTime> TDate { get; set; }
-        public string LCode { get; set; }
         public string PCode { get; set; }
         public string MetalType { get; set; }
         public string TType { get; set; }
         public Nullable<int> RefVNo { get; set; }
+        public Nullable<int> JobNo { get; set; }
+        public Nullable<int> OrderNo { get; set; }
         public Nullable<decimal> Pcs { get; set; }
         public Nullable<decimal> GrossWt { get; set; }
         public Nullable<decimal> NetWt { get; set; }
-        public Nullable<decimal> Rate { get; set; }
+        public Nullable<decimal> MakingRate { get; set; }
+        public Nullable<decimal> TotalRate { get; set; }
+        public Nullable<decimal> SellingRate { get; set; }
     }
 }

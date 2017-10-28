@@ -168,6 +168,7 @@
     <Compile Include="DAL\Model\Receipt.cs">
       <DependentUpon>SilverModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Model\ReceiptModel.cs" />
     <Compile Include="DAL\Model\SilverModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -206,7 +207,6 @@
     </Compile>
     <Compile Include="Report\DataSetSchema.cs">
       <DependentUpon>DataSetSchema.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\InvoicePrinting.cs">
       <SubType>Form</SubType>

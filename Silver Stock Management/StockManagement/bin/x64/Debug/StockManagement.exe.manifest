@@ -323,14 +323,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="StockManagement.exe" size="952832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="StockManagement.exe" size="965120">
       <assemblyIdentity name="StockManagement" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EoomJii+QvxEbMEmPz3pwlqc3gGizerdGXO3PJJeTjg=</dsig:DigestValue>
+        <dsig:DigestValue>r2YhzyKrqdg0b9eUId/B0AygBhwG9m4HKx6bswGXLhQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -361,13 +361,13 @@
       <dsig:DigestValue>gfT/ox4JZ1cHftz06lOKJ6eFT/cgjRsgFQTjISl9qpE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="StockManagement.exe.config" size="1618">
+  <file name="StockManagement.exe.config" size="1674">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>pP2ILNekyhn2iQjcwGPN7J6bkXkOZ2rMsClcFngNTqM=</dsig:DigestValue>
+      <dsig:DigestValue>2zy78J5zi754EHWYrgkzcFcJnzQBCxFiM3GRcDuVUpg=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="35d2b5f2a04c48beb076f2525c1e830f" Name="Diagram1">
+      <Diagram DiagramId="c53137688f1449fc98cf3c56693f0468" Name="Diagram1">
         <EntityTypeShape EntityType="SilverModel.CustomerM" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SilverModel.MetalM" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SilverModel.ProductM" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SilverModel.InOut" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SilverModel.Receipt" Width="1.5" PointX="5.75" PointY="5.75" />
-        <EntityTypeShape EntityType="SilverModel.StockInfo" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SilverModel.InOut" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SilverModel.MetalM" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SilverModel.ProductM" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SilverModel.Receipt" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SilverModel.StockInfo" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

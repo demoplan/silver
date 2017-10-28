@@ -17,12 +17,11 @@ namespace StockManagement.DAL.Model
         public int ID { get; set; }
         public Nullable<int> VNo { get; set; }
         public Nullable<System.DateTime> VDate { get; set; }
+        public string CustType { get; set; }
         public string LCode { get; set; }
         public Nullable<decimal> GrossWt { get; set; }
         public Nullable<decimal> NetWt { get; set; }
-        public Nullable<decimal> MakingRate { get; set; }
-        public Nullable<decimal> MakingCharge { get; set; }
-        public Nullable<int> RoundOff { get; set; }
-        public Nullable<decimal> TotalAmt { get; set; }
+        public Nullable<decimal> MakingTotal { get; set; }
+        public string Remarks { get; set; }
     }
 }

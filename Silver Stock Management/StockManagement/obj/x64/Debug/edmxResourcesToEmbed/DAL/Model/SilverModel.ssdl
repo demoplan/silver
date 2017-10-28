@@ -20,15 +20,18 @@
     <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SeqNo" Type="int" Nullable="false" />
     <Property Name="TDate" Type="datetime" />
-    <Property Name="LCode" Type="varchar" MaxLength="50" />
     <Property Name="PCode" Type="varchar" MaxLength="50" />
     <Property Name="MetalType" Type="varchar" MaxLength="250" />
     <Property Name="TType" Type="varchar" MaxLength="3" />
     <Property Name="RefVNo" Type="int" />
+    <Property Name="JobNo" Type="int" />
+    <Property Name="OrderNo" Type="int" />
     <Property Name="Pcs" Type="decimal" Precision="16" Scale="4" />
     <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
     <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
-    <Property Name="Rate" Type="decimal" Precision="16" Scale="4" />
+    <Property Name="MakingRate" Type="decimal" Precision="16" Scale="4" />
+    <Property Name="TotalRate" Type="decimal" Precision="16" Scale="4" />
+    <Property Name="SellingRate" Type="decimal" Precision="16" Scale="4" />
   </EntityType>
   <EntityType Name="MetalM">
     <Key>
@@ -52,13 +55,12 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="VNo" Type="int" />
     <Property Name="VDate" Type="datetime" />
+    <Property Name="CustType" Type="varchar" MaxLength="1" />
     <Property Name="LCode" Type="varchar" MaxLength="50" />
     <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
     <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
-    <Property Name="MakingRate" Type="decimal" Precision="16" Scale="4" />
-    <Property Name="MakingCharge" Type="decimal" Precision="16" Scale="4" />
-    <Property Name="RoundOff" Type="int" />
-    <Property Name="TotalAmt" Type="decimal" Precision="16" Scale="4" />
+    <Property Name="MakingTotal" Type="decimal" Precision="16" Scale="4" />
+    <Property Name="Remarks" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="StockInfo">
     <Key>
@@ -67,21 +69,23 @@
     <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SeqNo" Type="int" Nullable="false" />
     <Property Name="TDate" Type="datetime" />
-    <Property Name="LCode" Type="varchar" MaxLength="50" />
     <Property Name="PCode" Type="varchar" MaxLength="50" />
-    <Property Name="TagNo" Type="varchar" MaxLength="50" />
+    <Property Name="BarCode" Type="varchar" MaxLength="50" />
     <Property Name="MetalType" Type="varchar" MaxLength="250" />
     <Property Name="InType" Type="varchar" MaxLength="10" />
     <Property Name="RefVNo" Type="int" />
+    <Property Name="JobNo" Type="int" />
+    <Property Name="OrderNo" Type="int" />
     <Property Name="Pcs" Type="decimal" Precision="16" Scale="4" />
     <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
     <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
-    <Property Name="Rate" Type="decimal" Precision="16" Scale="4" />
+    <Property Name="MakingRate" Type="decimal" Precision="16" Scale="4" />
+    <Property Name="TotalRate" Type="decimal" Precision="16" Scale="4" />
+    <Property Name="SellingRate" Type="decimal" Precision="16" Scale="4" />
     <Property Name="Photo" Type="varchar" MaxLength="200" />
     <Property Name="OutDate" Type="datetime" />
     <Property Name="OutBillNo" Type="int" />
     <Property Name="OutType" Type="varchar" MaxLength="10" />
-    <Property Name="Remarks" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityContainer Name="SilverModelStoreContainer">
     <EntitySet Name="CustomerM" EntityType="Self.CustomerM" Schema="dbo" store:Type="Tables" />

@@ -15,6 +15,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="InOuts">
+      <EntityTypeMapping TypeName="SilverModel.InOut">
+        <MappingFragment StoreEntitySet="InOut">
+          <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+          <ScalarProperty Name="TDate" ColumnName="TDate" />
+          <ScalarProperty Name="PCode" ColumnName="PCode" />
+          <ScalarProperty Name="MetalType" ColumnName="MetalType" />
+          <ScalarProperty Name="TType" ColumnName="TType" />
+          <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
+          <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+          <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+          <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+          <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
+          <ScalarProperty Name="TotalRate" ColumnName="TotalRate" />
+          <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="MetalMs">
       <EntityTypeMapping TypeName="SilverModel.MetalM">
         <MappingFragment StoreEntitySet="MetalM">
@@ -32,61 +53,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="InOuts">
-      <EntityTypeMapping TypeName="SilverModel.InOut">
-        <MappingFragment StoreEntitySet="InOut">
-          <ScalarProperty Name="Rate" ColumnName="Rate" />
-          <ScalarProperty Name="NetWt" ColumnName="NetWt" />
-          <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
-          <ScalarProperty Name="Pcs" ColumnName="Pcs" />
-          <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
-          <ScalarProperty Name="TType" ColumnName="TType" />
-          <ScalarProperty Name="MetalType" ColumnName="MetalType" />
-          <ScalarProperty Name="PCode" ColumnName="PCode" />
-          <ScalarProperty Name="LCode" ColumnName="LCode" />
-          <ScalarProperty Name="TDate" ColumnName="TDate" />
-          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
-          <ScalarProperty Name="TID" ColumnName="TID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Receipts">
       <EntityTypeMapping TypeName="SilverModel.Receipt">
         <MappingFragment StoreEntitySet="Receipt">
-          <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
-          <ScalarProperty Name="RoundOff" ColumnName="RoundOff" />
-          <ScalarProperty Name="MakingCharge" ColumnName="MakingCharge" />
-          <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
-          <ScalarProperty Name="NetWt" ColumnName="NetWt" />
-          <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
-          <ScalarProperty Name="LCode" ColumnName="LCode" />
-          <ScalarProperty Name="VDate" ColumnName="VDate" />
-          <ScalarProperty Name="VNo" ColumnName="VNo" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VNo" ColumnName="VNo" />
+          <ScalarProperty Name="VDate" ColumnName="VDate" />
+          <ScalarProperty Name="CustType" ColumnName="CustType" />
+          <ScalarProperty Name="LCode" ColumnName="LCode" />
+          <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+          <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+          <ScalarProperty Name="MakingTotal" ColumnName="MakingTotal" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="StockInfoes">
       <EntityTypeMapping TypeName="SilverModel.StockInfo">
         <MappingFragment StoreEntitySet="StockInfo">
-          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-          <ScalarProperty Name="OutType" ColumnName="OutType" />
-          <ScalarProperty Name="OutBillNo" ColumnName="OutBillNo" />
-          <ScalarProperty Name="OutDate" ColumnName="OutDate" />
-          <ScalarProperty Name="Photo" ColumnName="Photo" />
-          <ScalarProperty Name="Rate" ColumnName="Rate" />
-          <ScalarProperty Name="NetWt" ColumnName="NetWt" />
-          <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
-          <ScalarProperty Name="Pcs" ColumnName="Pcs" />
-          <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
-          <ScalarProperty Name="InType" ColumnName="InType" />
-          <ScalarProperty Name="MetalType" ColumnName="MetalType" />
-          <ScalarProperty Name="TagNo" ColumnName="TagNo" />
-          <ScalarProperty Name="PCode" ColumnName="PCode" />
-          <ScalarProperty Name="LCode" ColumnName="LCode" />
-          <ScalarProperty Name="TDate" ColumnName="TDate" />
-          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
           <ScalarProperty Name="TID" ColumnName="TID" />
+          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+          <ScalarProperty Name="TDate" ColumnName="TDate" />
+          <ScalarProperty Name="PCode" ColumnName="PCode" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="MetalType" ColumnName="MetalType" />
+          <ScalarProperty Name="InType" ColumnName="InType" />
+          <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
+          <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+          <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+          <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+          <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
+          <ScalarProperty Name="TotalRate" ColumnName="TotalRate" />
+          <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="OutDate" ColumnName="OutDate" />
+          <ScalarProperty Name="OutBillNo" ColumnName="OutBillNo" />
+          <ScalarProperty Name="OutType" ColumnName="OutType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -13,6 +13,26 @@
     <Property Name="PAN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="CustType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="InOut">
+    <Key>
+      <PropertyRef Name="TID" />
+    </Key>
+    <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SeqNo" Type="Int32" Nullable="false" />
+    <Property Name="TDate" Type="DateTime" Precision="3" />
+    <Property Name="PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MetalType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TType" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="RefVNo" Type="Int32" />
+    <Property Name="JobNo" Type="Int32" />
+    <Property Name="OrderNo" Type="Int32" />
+    <Property Name="Pcs" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="MakingRate" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="TotalRate" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="SellingRate" Type="Decimal" Precision="16" Scale="4" />
+  </EntityType>
   <EntityType Name="MetalM">
     <Key>
       <PropertyRef Name="ID" />
@@ -28,31 +48,6 @@
     <Property Name="ItemCode" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="PName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityContainer Name="SilverEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="CustomerMs" EntityType="Self.CustomerM" />
-    <EntitySet Name="MetalMs" EntityType="Self.MetalM" />
-    <EntitySet Name="ProductMs" EntityType="Self.ProductM" />
-    <EntitySet Name="InOuts" EntityType="SilverModel.InOut" />
-    <EntitySet Name="Receipts" EntityType="SilverModel.Receipt" />
-    <EntitySet Name="StockInfoes" EntityType="SilverModel.StockInfo" />
-  </EntityContainer>
-  <EntityType Name="InOut">
-    <Key>
-      <PropertyRef Name="TID" />
-    </Key>
-    <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="SeqNo" Type="Int32" Nullable="false" />
-    <Property Name="TDate" Type="DateTime" Precision="3" />
-    <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="MetalType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="TType" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-    <Property Name="RefVNo" Type="Int32" />
-    <Property Name="Pcs" Type="Decimal" Precision="16" Scale="4" />
-    <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
-    <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
-    <Property Name="Rate" Type="Decimal" Precision="16" Scale="4" />
-  </EntityType>
   <EntityType Name="Receipt">
     <Key>
       <PropertyRef Name="ID" />
@@ -60,13 +55,12 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="VNo" Type="Int32" />
     <Property Name="VDate" Type="DateTime" Precision="3" />
+    <Property Name="CustType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
     <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
     <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
-    <Property Name="MakingRate" Type="Decimal" Precision="16" Scale="4" />
-    <Property Name="MakingCharge" Type="Decimal" Precision="16" Scale="4" />
-    <Property Name="RoundOff" Type="Int32" />
-    <Property Name="TotalAmt" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="MakingTotal" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="StockInfo">
     <Key>
@@ -75,20 +69,30 @@
     <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SeqNo" Type="Int32" Nullable="false" />
     <Property Name="TDate" Type="DateTime" Precision="3" />
-    <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="TagNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="MetalType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="InType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="RefVNo" Type="Int32" />
+    <Property Name="JobNo" Type="Int32" />
+    <Property Name="OrderNo" Type="Int32" />
     <Property Name="Pcs" Type="Decimal" Precision="16" Scale="4" />
     <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
     <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
-    <Property Name="Rate" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="MakingRate" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="TotalRate" Type="Decimal" Precision="16" Scale="4" />
+    <Property Name="SellingRate" Type="Decimal" Precision="16" Scale="4" />
     <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="OutDate" Type="DateTime" Precision="3" />
     <Property Name="OutBillNo" Type="Int32" />
     <Property Name="OutType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityContainer Name="SilverEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustomerMs" EntityType="Self.CustomerM" />
+    <EntitySet Name="InOuts" EntityType="Self.InOut" />
+    <EntitySet Name="MetalMs" EntityType="Self.MetalM" />
+    <EntitySet Name="ProductMs" EntityType="Self.ProductM" />
+    <EntitySet Name="Receipts" EntityType="Self.Receipt" />
+    <EntitySet Name="StockInfoes" EntityType="Self.StockInfo" />
+  </EntityContainer>
 </Schema>

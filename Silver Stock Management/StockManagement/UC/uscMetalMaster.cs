@@ -19,6 +19,7 @@ namespace StockManagement.UC
         {
             InitializeComponent();
             this.dataGrid.ReadOnly = false;
+            this.LoadGridData();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -132,7 +133,7 @@ namespace StockManagement.UC
 
         private void uscMetalMaster_Load(object sender, EventArgs e)
         {
-            this.LoadGridData();
+            //this.LoadGridData();
         }
 
         private void ModifyCancel(string pModCan)

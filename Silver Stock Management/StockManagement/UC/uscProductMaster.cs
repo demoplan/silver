@@ -18,7 +18,8 @@ namespace StockManagement.UC
         public uscProductMaster()
         {
             InitializeComponent();            
-            this.dataGrid.ReadOnly = true;           
+            this.dataGrid.ReadOnly = true;
+            this.LoadGridData();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -144,7 +145,7 @@ namespace StockManagement.UC
 
         private void uscProductMaster_Load(object sender, EventArgs e)
         {
-            this.LoadGridData();
+            //this.LoadGridData();
         }
 
         private void ModifyCancel(string pModCan)
