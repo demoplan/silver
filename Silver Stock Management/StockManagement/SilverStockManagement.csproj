@@ -156,10 +156,16 @@
     <Compile Include="DAL\Model\CustomerM.cs">
       <DependentUpon>SilverModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Model\CustomerOrderInfo.cs">
+      <DependentUpon>SilverModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Model\InOut.cs">
       <DependentUpon>SilverModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Model\MetalM.cs">
+      <DependentUpon>SilverModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\OrderDetail.cs">
       <DependentUpon>SilverModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Model\ProductM.cs">
@@ -207,6 +213,7 @@
     </Compile>
     <Compile Include="Report\DataSetSchema.cs">
       <DependentUpon>DataSetSchema.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\InvoicePrinting.cs">
       <SubType>Form</SubType>
@@ -220,6 +227,12 @@
     </Compile>
     <Compile Include="UI\Purchase.Designer.cs">
       <DependentUpon>Purchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CustomerOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CustomerOrder.Designer.cs">
+      <DependentUpon>CustomerOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Receipt.cs">
       <SubType>Form</SubType>
@@ -441,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase.resx">
       <DependentUpon>Purchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CustomerOrder.resx">
+      <DependentUpon>CustomerOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Receipt.resx">
       <DependentUpon>Receipt.cs</DependentUpon>

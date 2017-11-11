@@ -26,8 +26,10 @@ namespace StockManagement.DAL.Model
         }
     
         public virtual DbSet<CustomerM> CustomerMs { get; set; }
+        public virtual DbSet<CustomerOrderInfo> CustomerOrderInfoes { get; set; }
         public virtual DbSet<InOut> InOuts { get; set; }
         public virtual DbSet<MetalM> MetalMs { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<ProductM> ProductMs { get; set; }
         public virtual DbSet<Receipt> Receipts { get; set; }
         public virtual DbSet<StockInfo> StockInfoes { get; set; }

@@ -135,7 +135,7 @@ namespace StockManagement
 
         private void panelCalculator_Click(object sender, EventArgs e)
         {
-            StockManagement.UI.Receipt objReceipt = new UI.Receipt();
+            StockManagement.UI.CustomerOrder objReceipt = new UI.CustomerOrder();
             objReceipt.ShowDialog();
         }
 
@@ -162,6 +162,12 @@ namespace StockManagement
             goldRateMasterForm.ShowDialog();
             pnlContainer.Visible = true;
             //goldRateMasterForm.Show();
+        }
+
+        private void panel6_Click(object sender, EventArgs e)
+        {
+            CustomerOrder custOrder = new CustomerOrder();
+            custOrder.Show();
         }
     }
 }
