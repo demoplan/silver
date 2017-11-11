@@ -65,14 +65,10 @@ namespace StockManagement
 
         private void stockIN_Click(object sender, EventArgs e)
         {
-            StockManagement.Transaction.StockIN stockINForm = new StockManagement.Transaction.StockIN();
-            stockINForm.ShowDialog();
         }
 
         private void panel1_MouseClick(object sender, MouseEventArgs e)
         {
-            StockManagement.Transaction.StockIN stockINForm = new StockManagement.Transaction.StockIN();
-            stockINForm.ShowDialog();
         }
 
         private void panel1_MouseHover(object sender, EventArgs e)
@@ -168,6 +164,17 @@ namespace StockManagement
         {
             CustomerOrder custOrder = new CustomerOrder();
             custOrder.Show();
+        }
+
+        private void panel3_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void panel4_Click(object sender, EventArgs e)
+        {
+            UI.Receipt objReceipt = new Receipt();
+            objReceipt.Show();
         }
     }
 }

@@ -47,6 +47,9 @@
             this.panelReport = new System.Windows.Forms.Panel();
             this.pbReports = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -79,9 +82,6 @@
             this.pbBackup = new System.Windows.Forms.PictureBox();
             this.lblBackup = new System.Windows.Forms.Label();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.pnlContainer.SuspendLayout();
@@ -93,6 +93,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbMasterEntry)).BeginInit();
             this.panelReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbReports)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel3.SuspendLayout();
@@ -113,8 +115,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbRestore)).BeginInit();
             this.pnlBackup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackup)).BeginInit();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -334,6 +334,40 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Reports";
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Orange;
+            this.panel6.Controls.Add(this.pictureBox6);
+            this.panel6.Controls.Add(this.label11);
+            this.panel6.Location = new System.Drawing.Point(22, 418);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(125, 125);
+            this.panel6.TabIndex = 17;
+            this.panel6.Click += new System.EventHandler(this.panel6_Click);
+            this.panel6.MouseHover += new System.EventHandler(this.panelCalculator_MouseHover);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(24, 24);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(76, 76);
+            this.pictureBox6.TabIndex = 2;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.panelCalculator_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 103);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(109, 19);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Customer Order";
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Orange;
@@ -343,7 +377,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(125, 125);
             this.panel4.TabIndex = 17;
-            this.panel4.Click += new System.EventHandler(this.panelCalculator_Click);
+            this.panel4.Click += new System.EventHandler(this.panel4_Click);
             this.panel4.MouseHover += new System.EventHandler(this.panelCalculator_MouseHover);
             // 
             // pictureBox4
@@ -355,7 +389,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(76, 76);
             this.pictureBox4.TabIndex = 2;
             this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.panelCalculator_Click);
+            this.pictureBox4.Click += new System.EventHandler(this.panel4_Click);
             // 
             // label9
             // 
@@ -377,7 +411,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(125, 125);
             this.panel3.TabIndex = 17;
-            this.panel3.Click += new System.EventHandler(this.panelCalculator_Click);
+            this.panel3.Click += new System.EventHandler(this.panel3_Click);
             this.panel3.MouseHover += new System.EventHandler(this.panelCalculator_MouseHover);
             // 
             // pictureBox3
@@ -389,7 +423,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(76, 76);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.panelCalculator_Click);
+            this.pictureBox3.Click += new System.EventHandler(this.panel3_Click);
             // 
             // label8
             // 
@@ -681,40 +715,6 @@
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Blue;
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.Orange;
-            this.panel6.Controls.Add(this.pictureBox6);
-            this.panel6.Controls.Add(this.label11);
-            this.panel6.Location = new System.Drawing.Point(22, 418);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(125, 125);
-            this.panel6.TabIndex = 17;
-            this.panel6.Click += new System.EventHandler(this.panel6_Click);
-            this.panel6.MouseHover += new System.EventHandler(this.panelCalculator_MouseHover);
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(24, 24);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(76, 76);
-            this.pictureBox6.TabIndex = 2;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.panelCalculator_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(3, 103);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(109, 19);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Customer Order";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -739,6 +739,9 @@
             this.panelReport.ResumeLayout(false);
             this.panelReport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbReports)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -769,9 +772,6 @@
             this.pnlBackup.ResumeLayout(false);
             this.pnlBackup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackup)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }

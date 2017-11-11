@@ -374,12 +374,6 @@
     <Compile Include="UI\ModifyReceipt.Designer.cs">
       <DependentUpon>ModifyReceipt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transaction\StockIN.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Transaction\StockIN.Designer.cs">
-      <DependentUpon>StockIN.cs</DependentUpon>
-    </Compile>
     <Compile Include="Transaction\StockOUT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -472,9 +466,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ModifyReceipt.resx">
       <DependentUpon>ModifyReceipt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Transaction\StockIN.resx">
-      <DependentUpon>StockIN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaction\Sales.resx">
       <DependentUpon>Sales.cs</DependentUpon>
