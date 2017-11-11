@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SilverModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SilverModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CustomerM">
           <Key>
             <PropertyRef Name="ID" />
@@ -42,20 +42,18 @@
           <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SeqNo" Type="int" Nullable="false" />
           <Property Name="TDate" Type="datetime" />
-          <Property Name="LCode" Type="varchar" MaxLength="50" />
           <Property Name="PCode" Type="varchar" MaxLength="50" />
           <Property Name="MetalType" Type="varchar" MaxLength="250" />
           <Property Name="TType" Type="varchar" MaxLength="3" />
           <Property Name="RefVNo" Type="int" />
-          <Property Name="Pcs" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="NetWt" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="Rate" Type="decimal" Precision="16" Scale="3" />
           <Property Name="JobNo" Type="int" />
           <Property Name="OrderNo" Type="int" />
-          <Property Name="MakingRate" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="TotalRate" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="SellingRate" Type="decimal" Precision="16" Scale="3" />
+          <Property Name="Pcs" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="MakingRate" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="TotalRate" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="SellingRate" Type="decimal" Precision="16" Scale="4" />
         </EntityType>
         <EntityType Name="MetalM">
           <Key>
@@ -70,17 +68,18 @@
           </Key>
           <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="orderNo" Type="int" Nullable="false" />
+          <Property Name="orderDate" Type="datetime" />
           <Property Name="LCode" Type="varchar" MaxLength="50" />
           <Property Name="PCode" Type="varchar" MaxLength="50" />
           <Property Name="qty" Type="int" />
           <Property Name="weight" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="totalweight" Type="decimal" Precision="16" Scale="3" />
           <Property Name="KID" Type="varchar" MaxLength="10" />
           <Property Name="artisanReqDate" Type="datetime" />
           <Property Name="orderPlacedDate" Type="datetime" />
           <Property Name="orderRecdDate" Type="datetime" />
-          <Property Name="JobNo" Type="int" />
+          <Property Name="jobNo" Type="int" />
           <Property Name="orderType" Type="varchar" MaxLength="1" />
+          <Property Name="totalweight" Type="decimal" Precision="16" Scale="3" />
         </EntityType>
         <EntityType Name="ProductM">
           <Key>
@@ -97,16 +96,12 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="VNo" Type="int" />
           <Property Name="VDate" Type="datetime" />
+          <Property Name="CustType" Type="varchar" MaxLength="1" />
           <Property Name="LCode" Type="varchar" MaxLength="50" />
-          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="NetWt" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="MakingRate" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="MakingCharge" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="RoundOff" Type="int" />
-          <Property Name="TotalAmt" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="CustType" Type="varchar" MaxLength="10" />
-          <Property Name="MakingTotal" Type="decimal" Precision="10" Scale="3" />
-          <Property Name="Remarks" Type="varchar" MaxLength="250" />
+          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="MakingTotal" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="Remarks" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="StockInfo">
           <Key>
@@ -115,27 +110,23 @@
           <Property Name="TID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SeqNo" Type="int" Nullable="false" />
           <Property Name="TDate" Type="datetime" />
-          <Property Name="LCode" Type="varchar" MaxLength="50" />
           <Property Name="PCode" Type="varchar" MaxLength="50" />
-          <Property Name="TagNo" Type="varchar" MaxLength="50" />
+          <Property Name="BarCode" Type="varchar" MaxLength="50" />
           <Property Name="MetalType" Type="varchar" MaxLength="250" />
           <Property Name="InType" Type="varchar" MaxLength="10" />
           <Property Name="RefVNo" Type="int" />
-          <Property Name="Pcs" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="NetWt" Type="decimal" Precision="16" Scale="3" />
-          <Property Name="Rate" Type="decimal" Precision="16" Scale="3" />
+          <Property Name="JobNo" Type="int" />
+          <Property Name="OrderNo" Type="int" />
+          <Property Name="Pcs" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="MakingRate" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="TotalRate" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="SellingRate" Type="decimal" Precision="16" Scale="4" />
           <Property Name="Photo" Type="varchar" MaxLength="200" />
           <Property Name="OutDate" Type="datetime" />
           <Property Name="OutBillNo" Type="int" />
           <Property Name="OutType" Type="varchar" MaxLength="10" />
-          <Property Name="BarCode" Type="varchar" MaxLength="20" />
-          <Property Name="JobNo" Type="int" />
-          <Property Name="OrderNo" Type="int" />
-          <Property Name="MakingRate" Type="decimal" Precision="10" Scale="3" />
-          <Property Name="TotalRate" Type="decimal" Precision="10" Scale="3" />
-          <Property Name="SellingRate" Type="decimal" Precision="10" Scale="3" />
-          <Property Name="Remarks" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityContainer Name="SilverModelStoreContainer">
           <EntitySet Name="CustomerM" EntityType="Self.CustomerM" Schema="dbo" store:Type="Tables" />
@@ -151,16 +142,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SilverModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="SilverEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CustomerMs" EntityType="SilverModel.CustomerM" />
-          <EntitySet Name="CustomerOrderInfoes" EntityType="SilverModel.CustomerOrderInfo" />
-          <EntitySet Name="InOuts" EntityType="SilverModel.InOut" />
-          <EntitySet Name="MetalMs" EntityType="SilverModel.MetalM" />
-          <EntitySet Name="OrderDetails" EntityType="SilverModel.OrderDetail" />
-          <EntitySet Name="ProductMs" EntityType="SilverModel.ProductM" />
-          <EntitySet Name="Receipts" EntityType="SilverModel.Receipt" />
-          <EntitySet Name="StockInfoes" EntityType="SilverModel.StockInfo" />
-        </EntityContainer>
         <EntityType Name="CustomerM">
           <Key>
             <PropertyRef Name="ID" />
@@ -198,20 +179,18 @@
           <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SeqNo" Type="Int32" Nullable="false" />
           <Property Name="TDate" Type="DateTime" Precision="3" />
-          <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MetalType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="TType" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="RefVNo" Type="Int32" />
-          <Property Name="Pcs" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="Rate" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="JobNo" Type="Int32" Nullable="true" />
+          <Property Name="JobNo" Type="Int32" />
           <Property Name="OrderNo" Type="Int32" />
-          <Property Name="MakingRate" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="TotalRate" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="SellingRate" Type="Decimal" Precision="16" Scale="3" />
+          <Property Name="Pcs" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="MakingRate" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="TotalRate" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="SellingRate" Type="Decimal" Precision="16" Scale="4" />
         </EntityType>
         <EntityType Name="MetalM">
           <Key>
@@ -226,6 +205,7 @@
           </Key>
           <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="orderNo" Type="Int32" Nullable="false" />
+          <Property Name="orderDate" Type="DateTime" Precision="3" />
           <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="qty" Type="Int32" />
@@ -234,8 +214,8 @@
           <Property Name="artisanReqDate" Type="DateTime" Precision="3" />
           <Property Name="orderPlacedDate" Type="DateTime" Precision="3" />
           <Property Name="orderRecdDate" Type="DateTime" Precision="3" />
+          <Property Name="jobNo" Type="Int32" />
           <Property Name="orderType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="JobNo" Type="Int32" />
           <Property Name="totalweight" Type="Decimal" Precision="16" Scale="3" />
         </EntityType>
         <EntityType Name="ProductM">
@@ -253,16 +233,12 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VNo" Type="Int32" />
           <Property Name="VDate" Type="DateTime" Precision="3" />
+          <Property Name="CustType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="MakingRate" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="MakingCharge" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="RoundOff" Type="Int32" />
-          <Property Name="TotalAmt" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="CustType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="MakingTotal" Type="Decimal" Precision="10" Scale="3" />
-          <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="MakingTotal" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="StockInfo">
           <Key>
@@ -271,94 +247,98 @@
           <Property Name="TID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SeqNo" Type="Int32" Nullable="false" />
           <Property Name="TDate" Type="DateTime" Precision="3" />
-          <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TagNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MetalType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="InType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="RefVNo" Type="Int32" />
-          <Property Name="Pcs" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="3" />
-          <Property Name="Rate" Type="Decimal" Precision="16" Scale="3" />
+          <Property Name="JobNo" Type="Int32" />
+          <Property Name="OrderNo" Type="Int32" />
+          <Property Name="Pcs" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="MakingRate" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="TotalRate" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="SellingRate" Type="Decimal" Precision="16" Scale="4" />
           <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="OutDate" Type="DateTime" Precision="3" />
           <Property Name="OutBillNo" Type="Int32" />
           <Property Name="OutType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="BarCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="JobNo" Type="Int32" />
-          <Property Name="OrderNo" Type="Int32" />
-          <Property Name="MakingRate" Type="Decimal" Precision="10" Scale="3" />
-          <Property Name="TotalRate" Type="Decimal" Precision="10" Scale="3" />
-          <Property Name="SellingRate" Type="Decimal" Precision="10" Scale="3" />
         </EntityType>
-        </Schema>
+        <EntityContainer Name="SilverEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CustomerMs" EntityType="Self.CustomerM" />
+          <EntitySet Name="CustomerOrderInfoes" EntityType="Self.CustomerOrderInfo" />
+          <EntitySet Name="InOuts" EntityType="Self.InOut" />
+          <EntitySet Name="MetalMs" EntityType="Self.MetalM" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+          <EntitySet Name="ProductMs" EntityType="Self.ProductM" />
+          <EntitySet Name="Receipts" EntityType="Self.Receipt" />
+          <EntitySet Name="StockInfoes" EntityType="Self.StockInfo" />
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SilverModelStoreContainer" CdmEntityContainer="SilverEntities">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SilverModelStoreContainer" CdmEntityContainer="SilverEntities">
           <EntitySetMapping Name="CustomerMs">
             <EntityTypeMapping TypeName="SilverModel.CustomerM">
               <MappingFragment StoreEntitySet="CustomerM">
-                <ScalarProperty Name="CustType" ColumnName="CustType" />
-                <ScalarProperty Name="PAN" ColumnName="PAN" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="CustAddress" ColumnName="CustAddress" />
-                <ScalarProperty Name="CustName" ColumnName="CustName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CustName" ColumnName="CustName" />
+                <ScalarProperty Name="CustAddress" ColumnName="CustAddress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PAN" ColumnName="PAN" />
+                <ScalarProperty Name="CustType" ColumnName="CustType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerOrderInfoes">
             <EntityTypeMapping TypeName="SilverModel.CustomerOrderInfo">
               <MappingFragment StoreEntitySet="CustomerOrderInfo">
-                <ScalarProperty Name="remark" ColumnName="remark" />
-                <ScalarProperty Name="metalRate" ColumnName="metalRate" />
-                <ScalarProperty Name="metalType" ColumnName="metalType" />
-                <ScalarProperty Name="orderRecdTotalQty" ColumnName="orderRecdTotalQty" />
-                <ScalarProperty Name="orderTotalQty" ColumnName="orderTotalQty" />
-                <ScalarProperty Name="customerNotifiedByEmail" ColumnName="customerNotifiedByEmail" />
-                <ScalarProperty Name="customerNotifiedByMsg" ColumnName="customerNotifiedByMsg" />
-                <ScalarProperty Name="lcode" ColumnName="lcode" />
-                <ScalarProperty Name="orderDeliveryDate" ColumnName="orderDeliveryDate" />
-                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
-                <ScalarProperty Name="orderNo" ColumnName="orderNo" />
                 <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="orderNo" ColumnName="orderNo" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+                <ScalarProperty Name="orderDeliveryDate" ColumnName="orderDeliveryDate" />
+                <ScalarProperty Name="lcode" ColumnName="lcode" />
+                <ScalarProperty Name="customerNotifiedByMsg" ColumnName="customerNotifiedByMsg" />
+                <ScalarProperty Name="customerNotifiedByEmail" ColumnName="customerNotifiedByEmail" />
+                <ScalarProperty Name="orderTotalQty" ColumnName="orderTotalQty" />
+                <ScalarProperty Name="orderRecdTotalQty" ColumnName="orderRecdTotalQty" />
+                <ScalarProperty Name="metalType" ColumnName="metalType" />
+                <ScalarProperty Name="metalRate" ColumnName="metalRate" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InOuts">
             <EntityTypeMapping TypeName="SilverModel.InOut">
               <MappingFragment StoreEntitySet="InOut">
-                <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
-                <ScalarProperty Name="TotalRate" ColumnName="TotalRate" />
-                <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
-                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
-                <ScalarProperty Name="JobNo" ColumnName="JobNo" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
-                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
-                <ScalarProperty Name="Pcs" ColumnName="Pcs" />
-                <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
-                <ScalarProperty Name="TType" ColumnName="TType" />
-                <ScalarProperty Name="MetalType" ColumnName="MetalType" />
-                <ScalarProperty Name="PCode" ColumnName="PCode" />
-                <ScalarProperty Name="LCode" ColumnName="LCode" />
-                <ScalarProperty Name="TDate" ColumnName="TDate" />
-                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
                 <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+                <ScalarProperty Name="TDate" ColumnName="TDate" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="MetalType" ColumnName="MetalType" />
+                <ScalarProperty Name="TType" ColumnName="TType" />
+                <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
+                <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+                <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
+                <ScalarProperty Name="TotalRate" ColumnName="TotalRate" />
+                <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MetalMs">
             <EntityTypeMapping TypeName="SilverModel.MetalM">
               <MappingFragment StoreEntitySet="MetalM">
-                <ScalarProperty Name="MetalDesc" ColumnName="MetalDesc" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MetalDesc" ColumnName="MetalDesc" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -366,81 +346,75 @@
             <EntityTypeMapping TypeName="SilverModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
                 <ScalarProperty Name="totalweight" ColumnName="totalweight" />
-                <ScalarProperty Name="JobNo" ColumnName="JobNo" />
-                <ScalarProperty Name="orderType" ColumnName="orderType" />
-                <ScalarProperty Name="orderRecdDate" ColumnName="orderRecdDate" />
-                <ScalarProperty Name="orderPlacedDate" ColumnName="orderPlacedDate" />
-                <ScalarProperty Name="artisanReqDate" ColumnName="artisanReqDate" />
-                <ScalarProperty Name="KID" ColumnName="KID" />
-                <ScalarProperty Name="weight" ColumnName="weight" />
-                <ScalarProperty Name="qty" ColumnName="qty" />
-                <ScalarProperty Name="PCode" ColumnName="PCode" />
-                <ScalarProperty Name="LCode" ColumnName="LCode" />
-                <ScalarProperty Name="orderNo" ColumnName="orderNo" />
                 <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="orderNo" ColumnName="orderNo" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+                <ScalarProperty Name="LCode" ColumnName="LCode" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="KID" ColumnName="KID" />
+                <ScalarProperty Name="artisanReqDate" ColumnName="artisanReqDate" />
+                <ScalarProperty Name="orderPlacedDate" ColumnName="orderPlacedDate" />
+                <ScalarProperty Name="orderRecdDate" ColumnName="orderRecdDate" />
+                <ScalarProperty Name="jobNo" ColumnName="jobNo" />
+                <ScalarProperty Name="orderType" ColumnName="orderType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductMs">
             <EntityTypeMapping TypeName="SilverModel.ProductM">
               <MappingFragment StoreEntitySet="ProductM">
-                <ScalarProperty Name="PName" ColumnName="PName" />
-                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Receipts">
             <EntityTypeMapping TypeName="SilverModel.Receipt">
               <MappingFragment StoreEntitySet="Receipt">
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="MakingTotal" ColumnName="MakingTotal" />
-                <ScalarProperty Name="CustType" ColumnName="CustType" />
-                <ScalarProperty Name="TotalAmt" ColumnName="TotalAmt" />
-                <ScalarProperty Name="RoundOff" ColumnName="RoundOff" />
-                <ScalarProperty Name="MakingCharge" ColumnName="MakingCharge" />
-                <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
-                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
-                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
-                <ScalarProperty Name="LCode" ColumnName="LCode" />
-                <ScalarProperty Name="VDate" ColumnName="VDate" />
-                <ScalarProperty Name="VNo" ColumnName="VNo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VNo" ColumnName="VNo" />
+                <ScalarProperty Name="VDate" ColumnName="VDate" />
+                <ScalarProperty Name="CustType" ColumnName="CustType" />
+                <ScalarProperty Name="LCode" ColumnName="LCode" />
+                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+                <ScalarProperty Name="MakingTotal" ColumnName="MakingTotal" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StockInfoes">
             <EntityTypeMapping TypeName="SilverModel.StockInfo">
               <MappingFragment StoreEntitySet="StockInfo">
-                <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
-                <ScalarProperty Name="TotalRate" ColumnName="TotalRate" />
-                <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
-                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
-                <ScalarProperty Name="JobNo" ColumnName="JobNo" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="OutType" ColumnName="OutType" />
-                <ScalarProperty Name="OutBillNo" ColumnName="OutBillNo" />
-                <ScalarProperty Name="OutDate" ColumnName="OutDate" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
-                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
-                <ScalarProperty Name="Pcs" ColumnName="Pcs" />
-                <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
-                <ScalarProperty Name="InType" ColumnName="InType" />
-                <ScalarProperty Name="MetalType" ColumnName="MetalType" />
-                <ScalarProperty Name="TagNo" ColumnName="TagNo" />
-                <ScalarProperty Name="PCode" ColumnName="PCode" />
-                <ScalarProperty Name="LCode" ColumnName="LCode" />
-                <ScalarProperty Name="TDate" ColumnName="TDate" />
-                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
                 <ScalarProperty Name="TID" ColumnName="TID" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+                <ScalarProperty Name="TDate" ColumnName="TDate" />
+                <ScalarProperty Name="PCode" ColumnName="PCode" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="MetalType" ColumnName="MetalType" />
+                <ScalarProperty Name="InType" ColumnName="InType" />
+                <ScalarProperty Name="RefVNo" ColumnName="RefVNo" />
+                <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Pcs" ColumnName="Pcs" />
+                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+                <ScalarProperty Name="MakingRate" ColumnName="MakingRate" />
+                <ScalarProperty Name="TotalRate" ColumnName="TotalRate" />
+                <ScalarProperty Name="SellingRate" ColumnName="SellingRate" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="OutDate" ColumnName="OutDate" />
+                <ScalarProperty Name="OutBillNo" ColumnName="OutBillNo" />
+                <ScalarProperty Name="OutType" ColumnName="OutType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -454,7 +428,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

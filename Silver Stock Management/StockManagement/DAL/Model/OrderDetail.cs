@@ -16,6 +16,7 @@ namespace StockManagement.DAL.Model
     {
         public int TID { get; set; }
         public int orderNo { get; set; }
+        public Nullable<System.DateTime> orderDate { get; set; }
         public string LCode { get; set; }
         public string PCode { get; set; }
         public Nullable<int> qty { get; set; }
@@ -24,8 +25,8 @@ namespace StockManagement.DAL.Model
         public Nullable<System.DateTime> artisanReqDate { get; set; }
         public Nullable<System.DateTime> orderPlacedDate { get; set; }
         public Nullable<System.DateTime> orderRecdDate { get; set; }
+        public Nullable<int> jobNo { get; set; }
         public string orderType { get; set; }
-        public Nullable<int> JobNo { get; set; }
         public Nullable<decimal> totalweight { get; set; }
     }
 }
