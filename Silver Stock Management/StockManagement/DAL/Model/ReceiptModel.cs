@@ -84,5 +84,6 @@ namespace StockManagement.DAL.Model
         public string OutType { get; set; }
 
         //InOut Info  
+        public string StockInOut { get; set; }
     }
 }

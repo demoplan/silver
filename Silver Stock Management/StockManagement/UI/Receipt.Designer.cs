@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.ofdLoadPhoto = new System.Windows.Forms.OpenFileDialog();
-            this.tabSingle = new System.Windows.Forms.TabPage();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.txtVoucherNo = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -82,8 +82,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabSingle.SuspendLayout();
+            this.pbRefresh = new System.Windows.Forms.PictureBox();
+            this.mainPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -92,41 +92,41 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbSPAddImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSPAdd)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // ofdLoadPhoto
             // 
             this.ofdLoadPhoto.Filter = "Supported Image Files |*.jpeg;*.jpg;*.png;*.bmp";
             // 
-            // tabSingle
+            // mainPanel
             // 
-            this.tabSingle.BackColor = System.Drawing.Color.Cornsilk;
-            this.tabSingle.Controls.Add(this.txtVoucherNo);
-            this.tabSingle.Controls.Add(this.label17);
-            this.tabSingle.Controls.Add(this.groupBox1);
-            this.tabSingle.Controls.Add(this.cmbCustType);
-            this.tabSingle.Controls.Add(this.label1);
-            this.tabSingle.Controls.Add(this.cmbCustomer);
-            this.tabSingle.Controls.Add(this.label14);
-            this.tabSingle.Controls.Add(this.groupBox4);
-            this.tabSingle.Controls.Add(this.panel1);
-            this.tabSingle.Controls.Add(this.dtDate);
-            this.tabSingle.Controls.Add(this.btnReset);
-            this.tabSingle.Controls.Add(this.btnModify);
-            this.tabSingle.Controls.Add(this.btnDelete);
-            this.tabSingle.Controls.Add(this.btnSave);
-            this.tabSingle.Controls.Add(this.cmbMetal);
-            this.tabSingle.Controls.Add(this.label6);
-            this.tabSingle.Controls.Add(this.label27);
-            this.tabSingle.Controls.Add(this.panel3);
-            this.tabSingle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabSingle.Location = new System.Drawing.Point(4, 25);
-            this.tabSingle.Name = "tabSingle";
-            this.tabSingle.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSingle.Size = new System.Drawing.Size(1298, 678);
-            this.tabSingle.TabIndex = 0;
-            this.tabSingle.Text = "Single";
+            this.mainPanel.BackColor = System.Drawing.Color.Cornsilk;
+            this.mainPanel.Controls.Add(this.txtVoucherNo);
+            this.mainPanel.Controls.Add(this.label17);
+            this.mainPanel.Controls.Add(this.groupBox1);
+            this.mainPanel.Controls.Add(this.cmbCustType);
+            this.mainPanel.Controls.Add(this.label1);
+            this.mainPanel.Controls.Add(this.cmbCustomer);
+            this.mainPanel.Controls.Add(this.label14);
+            this.mainPanel.Controls.Add(this.groupBox4);
+            this.mainPanel.Controls.Add(this.panel1);
+            this.mainPanel.Controls.Add(this.dtDate);
+            this.mainPanel.Controls.Add(this.btnReset);
+            this.mainPanel.Controls.Add(this.btnModify);
+            this.mainPanel.Controls.Add(this.btnDelete);
+            this.mainPanel.Controls.Add(this.btnSave);
+            this.mainPanel.Controls.Add(this.cmbMetal);
+            this.mainPanel.Controls.Add(this.label6);
+            this.mainPanel.Controls.Add(this.label27);
+            this.mainPanel.Controls.Add(this.panel3);
+            this.mainPanel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainPanel.Location = new System.Drawing.Point(4, 25);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Padding = new System.Windows.Forms.Padding(3);
+            this.mainPanel.Size = new System.Drawing.Size(1298, 678);
+            this.mainPanel.TabIndex = 0;
+            this.mainPanel.Text = "Single";
             // 
             // txtVoucherNo
             // 
@@ -353,6 +353,7 @@
             this.btnModify.TabIndex = 10;
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = false;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnDelete
             // 
@@ -372,6 +373,7 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
@@ -424,6 +426,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.panel3.Controls.Add(this.pbRefresh);
             this.panel3.Controls.Add(this.dgvSP);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.pbSPAddImage);
@@ -466,6 +469,8 @@
             this.dgvSP.TabIndex = 32;
             this.dgvSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSP_CellClick);
             this.dgvSP.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvSP_RowsAdded);
+            this.dgvSP.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvSP_RowsRemoved);
+            this.dgvSP.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvSP_UserDeletingRow);
             // 
             // label7
             // 
@@ -606,6 +611,7 @@
             this.txtPCs.Name = "txtPCs";
             this.txtPCs.Size = new System.Drawing.Size(51, 29);
             this.txtPCs.TabIndex = 12;
+            this.txtPCs.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPCs_KeyPress);
             // 
             // txtNetWt
             // 
@@ -616,6 +622,7 @@
             this.txtNetWt.TabIndex = 14;
             this.txtNetWt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNetWt.TextChanged += new System.EventHandler(this.txtNetWt_TextChanged);
+            this.txtNetWt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNetWt_KeyPress);
             // 
             // txtBarCode
             // 
@@ -633,6 +640,7 @@
             this.txtSellingRate.Size = new System.Drawing.Size(96, 29);
             this.txtSellingRate.TabIndex = 17;
             this.txtSellingRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSellingRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSellingRate_KeyPress);
             // 
             // txtTotalRate
             // 
@@ -653,6 +661,7 @@
             this.txtMakingRate.TabIndex = 15;
             this.txtMakingRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMakingRate.TextChanged += new System.EventHandler(this.txtMakingRate_TextChanged);
+            this.txtMakingRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMakingRate_KeyPress);
             // 
             // label16
             // 
@@ -673,6 +682,7 @@
             this.txtGsWt.Size = new System.Drawing.Size(107, 29);
             this.txtGsWt.TabIndex = 13;
             this.txtGsWt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtGsWt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGsWt_KeyPress);
             // 
             // label13
             // 
@@ -718,17 +728,16 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "Net Weight :";
             // 
-            // tabControl1
+            // pbRefresh
             // 
-            this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabControl1.Controls.Add(this.tabSingle);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1306, 707);
-            this.tabControl1.TabIndex = 0;
-            this.tabControl1.Tag = "Composite";
+            this.pbRefresh.Image = global::StockManagement.Properties.Resources.appbar_checkmark_cross;
+            this.pbRefresh.Location = new System.Drawing.Point(1223, 65);
+            this.pbRefresh.Name = "pbRefresh";
+            this.pbRefresh.Size = new System.Drawing.Size(31, 29);
+            this.pbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbRefresh.TabIndex = 33;
+            this.pbRefresh.TabStop = false;
+            this.pbRefresh.Click += new System.EventHandler(this.pbRefresh_Click);
             // 
             // Receipt
             // 
@@ -736,14 +745,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1306, 707);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.mainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Receipt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "StockIN";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.tabSingle.ResumeLayout(false);
-            this.tabSingle.PerformLayout();
+            this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -756,7 +765,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbSPAddImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSPAdd)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -764,7 +773,7 @@
         #endregion
 
         private System.Windows.Forms.OpenFileDialog ofdLoadPhoto;
-        private System.Windows.Forms.TabPage tabSingle;
+        private System.Windows.Forms.Panel mainPanel;        
         private System.Windows.Forms.DataGridView dgvSP;
         private System.Windows.Forms.PictureBox pbSPAdd;
         private System.Windows.Forms.PictureBox pbSPAddImage;
@@ -790,8 +799,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Label label27;        
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox cmbCustomer;
         private System.Windows.Forms.Label label14;
@@ -818,5 +826,6 @@
         private System.Windows.Forms.ComboBox cmbMetal;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtVoucherNo;
+        private System.Windows.Forms.PictureBox pbRefresh;
     }
 }
