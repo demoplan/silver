@@ -71,9 +71,37 @@ OutType varchar(10),
 Remarks varchar(250)
 )
 
+create table OrderDetail(
+TID int identity primary key,
+orderNo int not null,
+orderDate datetime,
+LCode varchar(50),
+PCode varchar(50),
+qty int,
+weight dec(16,3),
+KID varchar(10),
+artisanReqDate datetime,
+orderPlacedDate datetime,
+orderRecdDate datetime,
+jobNo int,
+orderType varChar(1)
+)
 
 
-
+create table CustomerOrderInfo(	
+TID int identity primary key,
+orderNo	int,
+orderDate Date,
+orderDeliveryDate Date,
+lcode	varChar(10),
+customerNotifiedByMsg	Date,
+customerNotifiedByEmail	Date,
+orderTotalQty	int,
+orderRecdTotalQty	int,
+metalType	varChar(20),
+metalRate	dec(16,3),
+remark	varChar(250)
+)
 
 
 
