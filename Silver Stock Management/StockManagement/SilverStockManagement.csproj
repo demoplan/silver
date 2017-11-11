@@ -355,11 +355,11 @@
     <Compile Include="Transaction\ModifyStockOut.Designer.cs">
       <DependentUpon>ModifyStockOut.cs</DependentUpon>
     </Compile>
-    <Compile Include="Transaction\ModifyStockIn.cs">
+    <Compile Include="UI\ModifyReceipt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Transaction\ModifyStockIn.Designer.cs">
-      <DependentUpon>ModifyStockIn.cs</DependentUpon>
+    <Compile Include="UI\ModifyReceipt.Designer.cs">
+      <DependentUpon>ModifyReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaction\StockIN.cs">
       <SubType>Form</SubType>
@@ -454,8 +454,8 @@
     <EmbeddedResource Include="Transaction\ModifyStockOut.resx">
       <DependentUpon>ModifyStockOut.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Transaction\ModifyStockIn.resx">
-      <DependentUpon>ModifyStockIn.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ModifyReceipt.resx">
+      <DependentUpon>ModifyReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Transaction\StockIN.resx">
       <DependentUpon>StockIN.cs</DependentUpon>
