@@ -1379,11 +1379,11 @@ namespace StockManagement.Transaction
         {
             if (btnModify.Text.Equals("Modify"))
             {
-                ModifyStockIn modifyForm = new ModifyStockIn(this);
-                modifyForm.callingStatus = 1;
-                modifyForm.preCondition = "OUTDATE IS NULL AND SUBITEM IS NULL";
-                modifyForm.Location = new Point(8, 45);
-                modifyForm.ShowDialog();
+                //ModifyStockIn modifyForm = new ModifyStockIn(this);
+                //modifyForm.callingStatus = 1;
+                //modifyForm.preCondition = "OUTDATE IS NULL AND SUBITEM IS NULL";
+                //modifyForm.Location = new Point(8, 45);
+                //modifyForm.ShowDialog();
             }
             else
             {
@@ -1771,11 +1771,11 @@ namespace StockManagement.Transaction
         {
             if (btnModifyC.Text.Equals("Modify"))
             {
-                ModifyStockIn modifyForm = new ModifyStockIn(this);
-                modifyForm.callingStatus = 2;
-                modifyForm.preCondition = "OUTDATE IS NULL AND SUBITEM = 1";
-                modifyForm.Location = new Point(8, 45);
-                modifyForm.ShowDialog();
+                //ModifyStockIn modifyForm = new ModifyStockIn(this);
+                //modifyForm.callingStatus = 2;
+                //modifyForm.preCondition = "OUTDATE IS NULL AND SUBITEM = 1";
+                //modifyForm.Location = new Point(8, 45);
+                //modifyForm.ShowDialog();
             }
             else
             {
