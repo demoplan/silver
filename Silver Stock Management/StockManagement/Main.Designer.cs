@@ -79,6 +79,9 @@
             this.pbBackup = new System.Windows.Forms.PictureBox();
             this.lblBackup = new System.Windows.Forms.Label();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.pnlContainer.SuspendLayout();
@@ -110,6 +113,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbRestore)).BeginInit();
             this.pnlBackup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackup)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -174,6 +179,7 @@
             this.pnlContainer.Controls.Add(this.panelNotepad);
             this.pnlContainer.Controls.Add(this.pnlMasterEntry);
             this.pnlContainer.Controls.Add(this.panelReport);
+            this.pnlContainer.Controls.Add(this.panel6);
             this.pnlContainer.Controls.Add(this.panel4);
             this.pnlContainer.Controls.Add(this.panel3);
             this.pnlContainer.Controls.Add(this.panelCalculator);
@@ -675,6 +681,40 @@
             // 
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Blue;
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Orange;
+            this.panel6.Controls.Add(this.pictureBox6);
+            this.panel6.Controls.Add(this.label11);
+            this.panel6.Location = new System.Drawing.Point(22, 418);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(125, 125);
+            this.panel6.TabIndex = 17;
+            this.panel6.Click += new System.EventHandler(this.panel6_Click);
+            this.panel6.MouseHover += new System.EventHandler(this.panelCalculator_MouseHover);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(24, 24);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(76, 76);
+            this.pictureBox6.TabIndex = 2;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.panelCalculator_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 103);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(109, 19);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Customer Order";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -729,6 +769,9 @@
             this.pnlBackup.ResumeLayout(false);
             this.pnlBackup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBackup)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -784,6 +827,9 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label label11;
     }
 }
 
