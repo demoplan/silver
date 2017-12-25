@@ -85,13 +85,14 @@ LCode varchar(50),
 PCode varchar(50),
 qty int,
 weight dec(16,3),
+totalweight dec(16,3),
 KID varchar(10),
 artisanReqDate datetime,
 orderPlacedDate datetime,
 orderRecdDate datetime,
 jobNo int,
 orderType varChar(1),
-totalweight dec(16,3)
+isPrinted varChar(1)
 )
 
 --drop table CustomerOrderInfo

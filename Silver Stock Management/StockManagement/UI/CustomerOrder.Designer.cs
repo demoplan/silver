@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomerOrder));
             this.ofdLoadPhoto = new System.Windows.Forms.OpenFileDialog();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabSingle = new System.Windows.Forms.TabPage();
@@ -36,7 +37,6 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbCustomer = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -68,6 +68,8 @@
             this.txtTotalWeight = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.myColumnComboBox = new StockManagement.UC.ColumnComboBox();
+            this.txtPanNo = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabSingle.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -96,12 +98,13 @@
             // tabSingle
             // 
             this.tabSingle.BackColor = System.Drawing.Color.Cornsilk;
+            this.tabSingle.Controls.Add(this.myColumnComboBox);
             this.tabSingle.Controls.Add(this.txtEmail);
+            this.tabSingle.Controls.Add(this.txtPanNo);
             this.tabSingle.Controls.Add(this.txtMobile);
             this.tabSingle.Controls.Add(this.txtAddress);
             this.tabSingle.Controls.Add(this.label17);
             this.tabSingle.Controls.Add(this.label1);
-            this.tabSingle.Controls.Add(this.cmbCustomer);
             this.tabSingle.Controls.Add(this.panel1);
             this.tabSingle.Controls.Add(this.txtOrderNo);
             this.tabSingle.Controls.Add(this.txtMetalRate);
@@ -128,7 +131,7 @@
             // txtEmail
             // 
             this.txtEmail.ForeColor = System.Drawing.Color.Silver;
-            this.txtEmail.Location = new System.Drawing.Point(13, 174);
+            this.txtEmail.Location = new System.Drawing.Point(292, 74);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(273, 29);
             this.txtEmail.TabIndex = 43;
@@ -137,7 +140,7 @@
             // txtMobile
             // 
             this.txtMobile.ForeColor = System.Drawing.Color.Silver;
-            this.txtMobile.Location = new System.Drawing.Point(13, 208);
+            this.txtMobile.Location = new System.Drawing.Point(292, 107);
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(273, 29);
             this.txtMobile.TabIndex = 42;
@@ -145,7 +148,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(13, 107);
+            this.txtAddress.Location = new System.Drawing.Point(13, 109);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -156,7 +159,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(524, 62);
+            this.label17.Location = new System.Drawing.Point(350, 180);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(83, 21);
             this.label17.TabIndex = 40;
@@ -171,18 +174,6 @@
             this.label1.Size = new System.Drawing.Size(136, 21);
             this.label1.TabIndex = 35;
             this.label1.Text = "Customer Details :";
-            // 
-            // cmbCustomer
-            // 
-            this.cmbCustomer.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbCustomer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbCustomer.BackColor = System.Drawing.Color.Gainsboro;
-            this.cmbCustomer.FormattingEnabled = true;
-            this.cmbCustomer.Location = new System.Drawing.Point(13, 74);
-            this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(273, 29);
-            this.cmbCustomer.TabIndex = 0;
-            this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
             // 
             // panel1
             // 
@@ -223,7 +214,7 @@
             // txtOrderNo
             // 
             this.txtOrderNo.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtOrderNo.Location = new System.Drawing.Point(528, 89);
+            this.txtOrderNo.Location = new System.Drawing.Point(354, 207);
             this.txtOrderNo.Name = "txtOrderNo";
             this.txtOrderNo.Size = new System.Drawing.Size(115, 29);
             this.txtOrderNo.TabIndex = 3;
@@ -232,7 +223,7 @@
             // txtMetalRate
             // 
             this.txtMetalRate.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtMetalRate.Location = new System.Drawing.Point(528, 221);
+            this.txtMetalRate.Location = new System.Drawing.Point(678, 207);
             this.txtMetalRate.Name = "txtMetalRate";
             this.txtMetalRate.Size = new System.Drawing.Size(115, 29);
             this.txtMetalRate.TabIndex = 5;
@@ -241,7 +232,7 @@
             // dtDeliveryDate
             // 
             this.dtDeliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDeliveryDate.Location = new System.Drawing.Point(339, 158);
+            this.dtDeliveryDate.Location = new System.Drawing.Point(185, 207);
             this.dtDeliveryDate.Name = "dtDeliveryDate";
             this.dtDeliveryDate.Size = new System.Drawing.Size(128, 29);
             this.dtDeliveryDate.TabIndex = 2;
@@ -250,7 +241,7 @@
             // dtDate
             // 
             this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtDate.Location = new System.Drawing.Point(339, 89);
+            this.dtDate.Location = new System.Drawing.Point(12, 207);
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(128, 29);
             this.dtDate.TabIndex = 1;
@@ -287,6 +278,7 @@
             this.btnModify.TabIndex = 8;
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = false;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnDelete
             // 
@@ -322,6 +314,7 @@
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
             // 
             // cmbMetal
             // 
@@ -329,7 +322,7 @@
             this.cmbMetal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbMetal.BackColor = System.Drawing.Color.Gainsboro;
             this.cmbMetal.FormattingEnabled = true;
-            this.cmbMetal.Location = new System.Drawing.Point(524, 151);
+            this.cmbMetal.Location = new System.Drawing.Point(510, 207);
             this.cmbMetal.Name = "cmbMetal";
             this.cmbMetal.Size = new System.Drawing.Size(131, 29);
             this.cmbMetal.TabIndex = 4;
@@ -338,7 +331,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(339, 134);
+            this.label20.Location = new System.Drawing.Point(185, 183);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(110, 21);
             this.label20.TabIndex = 0;
@@ -348,7 +341,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(524, 197);
+            this.label2.Location = new System.Drawing.Point(674, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 21);
             this.label2.TabIndex = 1;
@@ -358,7 +351,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(522, 127);
+            this.label6.Location = new System.Drawing.Point(508, 183);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 21);
             this.label6.TabIndex = 1;
@@ -368,7 +361,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(339, 65);
+            this.label27.Location = new System.Drawing.Point(12, 183);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(94, 21);
             this.label27.TabIndex = 0;
@@ -539,6 +532,27 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "Appox Weight :";
             // 
+            // myColumnComboBox
+            // 
+            this.myColumnComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.myColumnComboBox.DropDownWidth = 17;
+            this.myColumnComboBox.FormattingEnabled = true;
+            this.myColumnComboBox.Location = new System.Drawing.Point(12, 74);
+            this.myColumnComboBox.Name = "myColumnComboBox";
+            this.myColumnComboBox.Size = new System.Drawing.Size(274, 30);
+            this.myColumnComboBox.TabIndex = 44;
+            this.myColumnComboBox.ViewColumn = 0;
+            this.myColumnComboBox.SelectedIndexChanged += new System.EventHandler(this.myColumnComboBox_SelectedIndexChanged);
+            // 
+            // txtPanNo
+            // 
+            this.txtPanNo.ForeColor = System.Drawing.Color.Silver;
+            this.txtPanNo.Location = new System.Drawing.Point(291, 141);
+            this.txtPanNo.Name = "txtPanNo";
+            this.txtPanNo.Size = new System.Drawing.Size(273, 29);
+            this.txtPanNo.TabIndex = 42;
+            this.txtPanNo.Text = "Pan Card";
+            // 
             // CustomerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -578,7 +592,6 @@
         private System.Windows.Forms.TextBox txtTotalGsWt;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbCustomer;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtRemark;
         private System.Windows.Forms.Panel panel1;
@@ -608,5 +621,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtOrderNo;
         private System.Windows.Forms.TextBox txtMetalRate;
+        private UC.ColumnComboBox myColumnComboBox;
+        private System.Windows.Forms.TextBox txtPanNo;
     }
 }

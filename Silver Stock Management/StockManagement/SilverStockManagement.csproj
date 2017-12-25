@@ -156,6 +156,7 @@
     <Compile Include="DAL\Model\CustomerM.cs">
       <DependentUpon>SilverModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Model\CustomerModel.cs" />
     <Compile Include="DAL\Model\CustomerOrderInfo.cs">
       <DependentUpon>SilverModel.tt</DependentUpon>
     </Compile>
@@ -222,6 +223,16 @@
       <DependentUpon>InvoicePrinting.cs</DependentUpon>
     </Compile>
     <Compile Include="Transaction\CameraCaptureUI.cs" />
+    <Compile Include="UC\ColumnComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UC\StringList.cs" />
+    <Compile Include="UI\ModifyCustomerOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ModifyCustomerOrder.Designer.cs">
+      <DependentUpon>ModifyCustomerOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Purchase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -385,6 +396,7 @@
     <Compile Include="Utils\GroupInfo.cs" />
     <Compile Include="Utils\ItemInfo.cs" />
     <Compile Include="Utils\LoggingManager.cs" />
+    <Compile Include="Utils\MiscUtils.cs" />
     <Compile Include="Utils\SaleBillInfo.cs" />
     <Compile Include="Utils\SalesLineItemDetail.cs" />
     <Compile Include="Utils\StoneInfo.cs" />
@@ -445,6 +457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Transaction\Import.resx">
       <DependentUpon>Import.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ModifyCustomerOrder.resx">
+      <DependentUpon>ModifyCustomerOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Purchase.resx">
       <DependentUpon>Purchase.cs</DependentUpon>

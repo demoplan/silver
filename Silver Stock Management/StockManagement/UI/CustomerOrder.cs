@@ -25,22 +25,22 @@ namespace StockManagement.UI
             this.orderNo = oNo;
             this.modify = edit;
             InitializeComponent();
-           // ResetForm();
             populateCustomerDetail();
-            formLoaded = true;
             ResetForm();
+            formLoaded = true;
+            //ResetForm();
+            txtOrderNo.Text = getMaxOrdernumber().ToString();
         }
 
         private void populateCustomerDetail()
         {
              using (entities = new DAL.Model.SilverEntities())
                 {
-                    var custSource = (from cust in entities.CustomerMs orderby cust.CustName select new { Name = cust.CustName, ID = cust.Code,  Address = cust.CustAddress, Email = cust.Email, Mobile = cust.Phone}).ToList();
+                    List<CustomerM> custSource = (from cust in entities.CustomerMs orderby cust.CustName select cust).ToList();
                    // var metalSource = (from metal in entities.MetalMs orderby metal.MetalDesc).ToList();
+                // custSource   
+                    DataTable datatable = MiscUtils.ToDataTable<CustomerM>(custSource);
 
-                    cmbCustomer.DataSource = custSource;
-                    cmbCustomer.DisplayMember = "Name";
-                    cmbCustomer.ValueMember = "ID";
                     
                     var metalSource=entities.MetalMs.OrderBy((x)=>x.MetalDesc).ToList();
                     cmbMetal.DataSource = metalSource;
@@ -51,26 +51,17 @@ namespace StockManagement.UI
                     cmbProductCode.DataSource = itemSource;
                     cmbProductCode.DisplayMember = "Pname";
                     cmbProductCode.ValueMember = "ItemCode";
-             }
-        }
+                    //txtOrderNo.Text = getMaxOrdernumber().ToString();
+                    LoadComboBox(datatable);
 
-        private void ResetForm()
-        {
-            try
-            {
-                this.dgvOrder.ReadOnly = true;
-                dtDate.Value = DateTime.Now;
-                dtDeliveryDate.Value = DateTime.Now.AddDays(5);
-                ResetInputControls();
-                using (entities = new DAL.Model.SilverEntities())
-                {
 
                     var gridData = (
-                            from ordDetail in entities.OrderDetails
-                            where ordDetail.orderNo == orderNo
-                            select ordDetail).ToList();
+                          from ordDetail in entities.OrderDetails
+                          where ordDetail.orderNo == orderNo
+                          select ordDetail).ToList();
                     var bindingListSP = new BindingList<OrderDetail>(gridData);
                     var sourceSP = new BindingSource(bindingListSP, null);
+                    dgvOrder.DataSource = null;
                     dgvOrder.DataSource = sourceSP;
 
                     dgvOrder.Columns["TID"].Visible = false;
@@ -82,12 +73,95 @@ namespace StockManagement.UI
                     dgvOrder.Columns["JobNo"].Visible = false;
                     dgvOrder.Columns["orderType"].Visible = false;
                     dgvOrder.Columns["orderNo"].Visible = false;
-                   
+                    dgvOrder.Columns["orderDate"].Visible = false;
                     dgvOrder.Columns["PCode"].HeaderText = "Item Name";
                     dgvOrder.Columns["Qty"].HeaderText = "Quantity";
                     dgvOrder.Columns["Weight"].HeaderText = "Weight";
                     dgvOrder.Columns["TotalWeight"].HeaderText = "Total Weight";
+             }
+        }
+
+        private int getMaxOrdernumber()
+        {
+            using (var localentities = new DAL.Model.SilverEntities())
+            {
+                var maxOrder = localentities.OrderDetails.Max(p => (int?)p.orderNo);
+
+                if (maxOrder == null)
+                {
+                    return 1;
                 }
+                else
+                {
+                    return (maxOrder.Value + 1);
+                }
+            }
+        }
+
+        public void loadDataByOrderNo(int orderNo)
+        {
+            using (entities = new DAL.Model.SilverEntities())
+            {
+
+                var gridData = (
+                        from ordDetail in entities.OrderDetails
+                        where ordDetail.orderNo == orderNo
+                        select ordDetail).ToList();
+                var bindingListSP = new BindingList<OrderDetail>(gridData);
+                var sourceSP = new BindingSource(bindingListSP, null);
+                dgvOrder.DataSource = null;
+                dgvOrder.DataSource = sourceSP;
+
+                dgvOrder.Columns["TID"].Visible = false;
+                dgvOrder.Columns["Lcode"].Visible = false;
+                dgvOrder.Columns["KID"].Visible = false;
+                dgvOrder.Columns["artisanReqDate"].Visible = false;
+                dgvOrder.Columns["orderPlacedDate"].Visible = false;
+                dgvOrder.Columns["orderRecdDate"].Visible = false;
+                dgvOrder.Columns["JobNo"].Visible = false;
+                dgvOrder.Columns["orderType"].Visible = false;
+                dgvOrder.Columns["orderNo"].Visible = false;
+                dgvOrder.Columns["orderDate"].Visible = false;
+                dgvOrder.Columns["PCode"].HeaderText = "Item Name";
+                dgvOrder.Columns["Qty"].HeaderText = "Quantity";
+                dgvOrder.Columns["Weight"].HeaderText = "Weight";
+                dgvOrder.Columns["TotalWeight"].HeaderText = "Total Weight";
+
+
+                var orderDetail = (from ordDetail in entities.CustomerOrderInfoes
+                                   where ordDetail.orderNo == orderNo
+                                   select ordDetail).ToList();
+                if (orderDetail != null)
+                {
+                    CustomerOrderInfo orderInfo = orderDetail[0];
+                    String custCode = orderInfo.lcode;
+                    var customerInfo = (from custInfo in entities.CustomerMs where custInfo.Code.Equals(custCode) select custInfo).ToList();
+                    txtMetalRate.Text = orderInfo.metalRate.ToString();
+                    dtDate.Value = orderInfo.orderDate.Value;
+                    dtDeliveryDate.Value = orderInfo.orderDeliveryDate.Value;
+                    txtRemark.Text = orderInfo.remark;
+                    myColumnComboBox.ValueMember = customerInfo[0].Code;
+                    DataTable table=(DataTable)myColumnComboBox.Data;
+                    DataRow[] foundRows = table.Select("Code = '" + customerInfo[0].Code +"'");
+                    if (foundRows.Length > 0)
+                    {
+                        int SelectedIndex = table.Rows.IndexOf(foundRows[0]);
+                        myColumnComboBox.SelectedIndex = SelectedIndex;
+                    }
+                    calculateTotalWeight();
+                }
+            }
+        }
+        private void ResetForm()
+        {
+            try
+            {
+                this.dgvOrder.ReadOnly = true;
+                dtDate.Value = DateTime.Now;
+                dtDeliveryDate.Value = DateTime.Now.AddDays(5);
+               
+                ResetInputControls();
+               
             }
             catch (Exception ex)
             {
@@ -100,11 +174,7 @@ namespace StockManagement.UI
             this.Close();      
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            Save();  
-        }
-        
+       
      
 
         private void calculateTotalWeight()
@@ -112,7 +182,7 @@ namespace StockManagement.UI
             double total = 0;
             for (int i = 0; i < dgvOrder.Rows.Count; i++)
             {
-                total+=double.Parse(dgvOrder.Rows[i].Cells[12].Value.ToString());
+                total+=double.Parse(dgvOrder.Rows[i].Cells[13].Value.ToString());
             }
             txtTotalGsWt.Text = total.ToString("#.000");
         }
@@ -130,10 +200,6 @@ namespace StockManagement.UI
             }
             txtTotalGsWt.Text = Convert.ToString(totalGsWt);
         }
-
-       
-
-        
 
         private void txtNetWt_TextChanged(object sender, EventArgs e)
         {
@@ -168,67 +234,37 @@ namespace StockManagement.UI
         private void Save()
         {
             BindingSource bslistSP = (BindingSource)dgvOrder.DataSource;
-            BindingList<ReceiptModel> listSP = (BindingList<ReceiptModel>)bslistSP.DataSource;
-
+            BindingList<OrderDetail> listSP = (BindingList<OrderDetail>)bslistSP.DataSource;
+            int orderNo = getMaxOrdernumber();
             using (entities = new SilverEntities())
             {
                 //Adding in Receipt
-                int voucherNo = entities.Receipts.Max(x => x.VNo).GetValueOrDefault() + 1;
-                DAL.Model.Receipt objRec = new DAL.Model.Receipt();
-                objRec.VNo = voucherNo;
-                objRec.VDate = dtDate.Value;
-                objRec.LCode = Convert.ToString(cmbCustomer.SelectedValue);
-                objRec.GrossWt = Convert.ToDecimal(txtTotalGsWt.Text.Trim());
-                objRec.Remarks = txtRemark.Text.Trim();
-                entities.Receipts.Add(objRec);
-
-                foreach (ReceiptModel rcModel in listSP)
+                
+                DAL.Model.CustomerOrderInfo objOrder = new DAL.Model.CustomerOrderInfo();
+                int totalQty = 0;
+                foreach (OrderDetail lineItemModel in listSP)
                 {
-                    if (String.IsNullOrEmpty(rcModel.BarCode))
-                    {
-                        //Add in InOut
-                        InOut model = new InOut();
-                        model.SeqNo = rcModel.SeqNo;
-                        model.TDate = rcModel.TDate;
-                        model.PCode = rcModel.PCode;
-                        model.MetalType = rcModel.MetalType;
-                        model.TType = rcModel.InType;
-                        model.RefVNo = voucherNo;
-                        model.JobNo = rcModel.JobNo;
-                        model.OrderNo = rcModel.OrderNo;
-                        model.Pcs = rcModel.Pcs;
-                        model.GrossWt = rcModel.GrossWt;
-                        model.NetWt = rcModel.NetWt;
-                        model.MakingRate = rcModel.MakingRate;
-                        model.TotalRate = rcModel.TotalRate;
-                        model.SellingRate = rcModel.SellingRate;
-                        entities.InOuts.Add(model);
-                    }
-                    else
-                    {
-                        //Add in StockInfo
-                        StockInfo model = new StockInfo();
-                        model.SeqNo = rcModel.SeqNo;
-                        model.TDate = rcModel.TDate;
-                        model.PCode = rcModel.PCode;
-                        model.BarCode = rcModel.BarCode;
-                        model.MetalType = rcModel.MetalType;
-                        model.InType = rcModel.InType;
-                        model.RefVNo = voucherNo;
-                        model.JobNo = rcModel.JobNo;
-                        model.OrderNo = rcModel.OrderNo;
-                        model.Pcs = rcModel.Pcs;
-                        model.GrossWt = rcModel.GrossWt;
-                        model.NetWt = rcModel.NetWt;
-                        model.MakingRate = rcModel.MakingRate;
-                        model.TotalRate = rcModel.TotalRate;
-                        model.SellingRate = rcModel.SellingRate;
-                        model.Photo = rcModel.Photo;
-                        entities.StockInfoes.Add(model);
-                    }
+                    lineItemModel.orderNo = orderNo;
+                    entities.OrderDetails.Add(lineItemModel);
+                    totalQty += Int32.Parse(lineItemModel.qty.ToString());
                 }
+
+                objOrder.orderNo = getMaxOrdernumber();
+                objOrder.orderDate = dtDate.Value;
+                objOrder.orderDeliveryDate = dtDeliveryDate.Value;
+                objOrder.lcode = Convert.ToString(myColumnComboBox.ValueMember);
+                objOrder.orderTotalQty = totalQty;
+                objOrder.metalType = Convert.ToString(cmbMetal.SelectedValue);
+                objOrder.metalRate = Decimal.Parse(txtMetalRate.Text);
+                objOrder.remark = txtRemark.Text.Trim();
+                entities.CustomerOrderInfoes.Add(objOrder);
+
+              
                 entities.SaveChanges();
             }
+            ResetForm();
+            ResetAfterSave();
+            
         }
 
         private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -253,6 +289,17 @@ namespace StockManagement.UI
             this.txtQty.Text = "";
             this.txtNetWt.Text = "";
             this.txtTotalWeight.Text = "";
+          
+        }
+
+        private void ResetAfterSave()
+        {
+            txtOrderNo.Text = getMaxOrdernumber().ToString();
+            txtRemark.Text = "";
+            txtMetalRate.Text = "";
+            txtTotalGsWt.Text = "";
+            this.dgvOrder.Rows.Clear();
+            myColumnComboBox.Select();
         }
 
         private void btnClose_Click_1(object sender, EventArgs e)
@@ -260,19 +307,7 @@ namespace StockManagement.UI
             Close();
         }
 
-        private void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbCustomer.SelectedIndex > -1 && formLoaded)
-            {
-                entities = new DAL.Model.SilverEntities();
-                var result = (from cust in entities.CustomerMs where cust.Code == cmbCustomer.SelectedValue.ToString() select new { Name = cust.CustName, ID = cust.Code, Address = cust.CustAddress, Email = cust.Email, Mobile = cust.Phone }).FirstOrDefault();
-
-                txtAddress.Text = result.Address;
-                txtMobile.Text = result.Mobile;
-                txtEmail.Text = result.Email;
-            }
-
-        }
+      
 
         private void cmbProductCode_KeyDown(object sender, KeyEventArgs e)
         {
@@ -295,20 +330,39 @@ namespace StockManagement.UI
             }
         }
 
+        private bool validateEntry()
+        {
+            if (txtOrderNo.Text.Length == 0)
+            {
+                MessageBox.Show("Order no is not valid.");
+                return false;
+            }
+            if (txtQty.Text == String.Empty || txtNetWt.Text == String.Empty)
+            {
+                MessageBox.Show("Please enter proper value.");
+                return false;
+            }
+            return true;
+        }
         private void pbSPAdd_Click_1(object sender, EventArgs e)
         {
-            BindingSource bslistSP = (BindingSource)dgvOrder.DataSource;
-            BindingList<OrderDetail> listSP = (BindingList<OrderDetail>)bslistSP.DataSource;
-            OrderDetail model = new OrderDetail();
-            model.LCode = cmbCustomer.SelectedValue.ToString();
-            model.orderNo =Int32.Parse(txtOrderNo.Text);
-            model.PCode = cmbProductCode.SelectedValue.ToString();
-            model.qty =Int32.Parse(txtQty.Text);
-            model.weight = Decimal.Parse(txtNetWt.Text);
-            model.totalweight = model.qty * model.weight;
-            model.orderType = "C";
-            listSP.Add(model);
-            calculateTotalWeight();
+            if (validateEntry())
+            {
+                BindingSource bslistSP = (BindingSource)dgvOrder.DataSource;
+                BindingList<OrderDetail> listSP = (BindingList<OrderDetail>)bslistSP.DataSource;
+                OrderDetail model = new OrderDetail();
+                model.orderDate = dtDate.Value;
+                model.LCode = myColumnComboBox.ValueMember.ToString();
+                model.orderNo = Int32.Parse(txtOrderNo.Text);
+                model.PCode = cmbProductCode.SelectedValue.ToString();
+                model.qty = Int32.Parse(txtQty.Text);
+                model.weight = Decimal.Parse(txtNetWt.Text);
+                model.totalweight = model.qty * model.weight;
+                model.orderType = "C";
+                listSP.Add(model);
+                calculateTotalWeight();
+                ResetInputControls();
+            }
         }
 
         private void txtNetWt_TextChanged_1(object sender, EventArgs e)
@@ -326,9 +380,74 @@ namespace StockManagement.UI
             if (e.KeyChar == 13 && txtNetWt.Text.Length>0)
             {
                 pbSPAdd_Click_1(null, null);
-                ResetInputControls();
                 cmbProductCode.Select();
             }
         }
+
+        private void btnSave_Click_1(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void changeButtonName(Button btn, string name)
+        {
+            btn.Text = name;
+        }
+
+
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            if (btnModify.Text.Equals("Modify"))
+            {
+                ModifyCustomerOrder modifyForm = new ModifyCustomerOrder(this);
+                
+                modifyForm.Location = new Point(8, 45);
+                modifyForm.ShowDialog();
+                changeButtonName(btnModify, "Cancel");
+            }
+            else
+            {
+                changeButtonName(btnModify, "Modify");
+                changeButtonName(btnSave, "Save");
+                ResetAfterSave();
+                ResetForm();
+                btnDelete.Visible = false;
+            }
+        }
+
+        private void LoadComboBox(DataTable myDataTable)
+        {
+            
+
+            //Now set the Data of the ColumnComboBox
+            myColumnComboBox.Data = myDataTable;
+            myColumnComboBox.ValueMember = "CODE";
+            myColumnComboBox.DisplayMember = "CustName";
+            //Set which row will be displayed in the text box
+            //If you set this to a column that isn't displayed then the suggesting functionality won't work.
+            myColumnComboBox.ViewColumn = 2;
+            //Set a few columns to not be shown
+            myColumnComboBox.Columns[0].Display = false;
+            //myColumnComboBox.Columns[1].Display = false;
+            myColumnComboBox.Columns[3].Display = false;
+            myColumnComboBox.Columns[7].Display = false;
+        }
+
+        private void myColumnComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            //You can get data from the selected row out of the ColumnComboBox like this:
+            if (myColumnComboBox.SelectedIndex > -1)//If there is no selected index the indexer will return null
+            {
+                txtEmail.Text = myColumnComboBox["email"].ToString();
+                txtMobile.Text = myColumnComboBox["Phone"].ToString();
+                txtAddress.Text = myColumnComboBox["CustAddress"].ToString();
+                txtPanNo.Text = myColumnComboBox["PAN"].ToString();
+                myColumnComboBox.Text = myColumnComboBox["CustName"].ToString();
+                myColumnComboBox.ValueMember = myColumnComboBox["Code"].ToString();
+            }
+        }
+
+      
+
     }
 }
