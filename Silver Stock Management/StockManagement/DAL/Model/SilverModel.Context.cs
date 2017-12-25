@@ -33,5 +33,6 @@ namespace StockManagement.DAL.Model
         public virtual DbSet<ProductM> ProductMs { get; set; }
         public virtual DbSet<Receipt> Receipts { get; set; }
         public virtual DbSet<StockInfo> StockInfoes { get; set; }
+        public virtual DbSet<Issue> Issues { get; set; }
     }
 }
