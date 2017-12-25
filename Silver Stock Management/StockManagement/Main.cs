@@ -168,7 +168,8 @@ namespace StockManagement
 
         private void panel3_Click(object sender, EventArgs e)
         {
-           
+            UI.Issue objIssue = new Issue();
+            objIssue.Show();
         }
 
         private void panel4_Click(object sender, EventArgs e)

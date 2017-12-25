@@ -57,6 +57,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.dgvSP = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.pbSPAddImage = new System.Windows.Forms.PictureBox();
@@ -82,17 +83,16 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.pbRefresh = new System.Windows.Forms.PictureBox();
             this.mainPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSPAddImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSPAdd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // ofdLoadPhoto
@@ -457,6 +457,17 @@
             this.panel3.Size = new System.Drawing.Size(1276, 342);
             this.panel3.TabIndex = 34;
             // 
+            // pbRefresh
+            // 
+            this.pbRefresh.Image = global::StockManagement.Properties.Resources.appbar_checkmark_cross;
+            this.pbRefresh.Location = new System.Drawing.Point(1223, 65);
+            this.pbRefresh.Name = "pbRefresh";
+            this.pbRefresh.Size = new System.Drawing.Size(31, 29);
+            this.pbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbRefresh.TabIndex = 33;
+            this.pbRefresh.TabStop = false;
+            this.pbRefresh.Click += new System.EventHandler(this.pbRefresh_Click);
+            // 
             // dgvSP
             // 
             this.dgvSP.AllowUserToAddRows = false;
@@ -465,6 +476,7 @@
             this.dgvSP.Name = "dgvSP";
             this.dgvSP.ReadOnly = true;
             this.dgvSP.RowTemplate.Height = 26;
+            this.dgvSP.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSP.Size = new System.Drawing.Size(1223, 239);
             this.dgvSP.TabIndex = 32;
             this.dgvSP.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSP_CellClick);
@@ -728,17 +740,6 @@
             this.label12.TabIndex = 1;
             this.label12.Text = "Net Weight :";
             // 
-            // pbRefresh
-            // 
-            this.pbRefresh.Image = global::StockManagement.Properties.Resources.appbar_checkmark_cross;
-            this.pbRefresh.Location = new System.Drawing.Point(1223, 65);
-            this.pbRefresh.Name = "pbRefresh";
-            this.pbRefresh.Size = new System.Drawing.Size(31, 29);
-            this.pbRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbRefresh.TabIndex = 33;
-            this.pbRefresh.TabStop = false;
-            this.pbRefresh.Click += new System.EventHandler(this.pbRefresh_Click);
-            // 
             // Receipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -761,11 +762,11 @@
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSPAddImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSPAdd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRefresh)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -55,6 +55,23 @@
           <Property Name="TotalRate" Type="decimal" Precision="16" Scale="4" />
           <Property Name="SellingRate" Type="decimal" Precision="16" Scale="4" />
         </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VNo" Type="int" />
+          <Property Name="VDate" Type="datetime" />
+          <Property Name="CustType" Type="varchar" MaxLength="1" />
+          <Property Name="LCode" Type="varchar" MaxLength="50" />
+          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="IssueTotal" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="SGST" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="CGST" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="NetTotal" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="Remarks" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="MetalM">
           <Key>
             <PropertyRef Name="ID" />
@@ -132,6 +149,7 @@
           <EntitySet Name="CustomerM" EntityType="Self.CustomerM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerOrderInfo" EntityType="Self.CustomerOrderInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InOut" EntityType="Self.InOut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Issue" EntityType="Self.Issue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MetalM" EntityType="Self.MetalM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductM" EntityType="Self.ProductM" Schema="dbo" store:Type="Tables" />
@@ -274,7 +292,25 @@
           <EntitySet Name="ProductMs" EntityType="Self.ProductM" />
           <EntitySet Name="Receipts" EntityType="Self.Receipt" />
           <EntitySet Name="StockInfoes" EntityType="Self.StockInfo" />
+          <EntitySet Name="Issues" EntityType="SilverModel.Issue" />
         </EntityContainer>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VNo" Type="Int32" />
+          <Property Name="VDate" Type="DateTime" Precision="3" />
+          <Property Name="CustType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="IssueTotal" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="SGST" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="CGST" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="NetTotal" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -409,6 +445,24 @@
                 <ScalarProperty Name="OutDate" ColumnName="OutDate" />
                 <ScalarProperty Name="OutBillNo" ColumnName="OutBillNo" />
                 <ScalarProperty Name="OutType" ColumnName="OutType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Issues">
+            <EntityTypeMapping TypeName="SilverModel.Issue">
+              <MappingFragment StoreEntitySet="Issue">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="NetTotal" ColumnName="NetTotal" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="IssueTotal" ColumnName="IssueTotal" />
+                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+                <ScalarProperty Name="LCode" ColumnName="LCode" />
+                <ScalarProperty Name="CustType" ColumnName="CustType" />
+                <ScalarProperty Name="VDate" ColumnName="VDate" />
+                <ScalarProperty Name="VNo" ColumnName="VNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -467,6 +467,9 @@
     <EmbeddedResource Include="UI\CustomerOrder.resx">
       <DependentUpon>CustomerOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\ModifyCustomerOrder.resx">
+      <DependentUpon>ModifyCustomerOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Receipt.resx">
       <DependentUpon>Receipt.cs</DependentUpon>
     </EmbeddedResource>

@@ -59,26 +59,33 @@ namespace StockManagement.UI
         {            
             using (entities = new DAL.Model.SilverEntities())
             {
-                if (chkDatewise.Checked)
-                {
-                    var receipts = (from rcpt in entities.Receipts where (rcpt.VDate.Value >= dtFromDate.Value && rcpt.VDate.Value <= dtToDate.Value) orderby rcpt.VNo select rcpt);
-                    dgModify.DataSource = receipts.ToList();
-                }
-                else if (chkProductwise.Checked)
-                {
-                    decimal dFrom = decimal.Parse(txtNetWtFrom.Text);
-                    decimal dTo = decimal.Parse(txtNetWtTo.Text);
-                   var receipts = (from rcpt in entities.Receipts
-                                   .Where(x=>x.LCode.Contains(txtCustName.Text.Trim()) || 
-                                   (x.NetWt >= dFrom && x.NetWt <=dTo )) orderby rcpt.VNo descending select rcpt);
-                    dgModify.DataSource = receipts.ToList();
-                }
-                else
-                {
-                   var receipts = (from rcpt in entities.Receipts orderby rcpt.VNo descending select rcpt).Take(10);
-                    dgModify.DataSource = receipts.ToList();
-                }
-                
+                //if (chkDatewise.Checked)
+                //{
+                //    var receipts = (from rcpt in entities.Receipts where (rcpt.VDate.Value >= dtFromDate.Value && rcpt.VDate.Value <= dtToDate.Value) orderby rcpt.VNo select rcpt);
+                //    dgModify.DataSource = receipts.ToList();
+                //}
+                //else if (chkProductwise.Checked)
+                //{
+                //    decimal dFrom = decimal.Parse(txtNetWtFrom.Text);
+                //    decimal dTo = decimal.Parse(txtNetWtTo.Text);
+                //   var receipts = (from rcpt in entities.Receipts
+                //                   .Where(x=>x.LCode.Contains(txtCustName.Text.Trim()) || 
+                //                   (x.NetWt >= dFrom && x.NetWt <=dTo )) orderby rcpt.VNo descending select rcpt);
+                //    dgModify.DataSource = receipts.ToList();
+                //}
+                //else
+                //{
+                //   var receipts = (from rcpt in entities.Receipts orderby rcpt.VNo descending select rcpt).Take(10);
+                //    dgModify.DataSource = receipts.ToList();
+                //}
+                decimal dFrom = decimal.Parse(txtNetWtFrom.Text);
+                decimal dTo = decimal.Parse(txtNetWtTo.Text);
+                var receipts = (from rcpt in entities.Receipts
+                                   .Where(x => (x.VDate.Value >= dtFromDate.Value && x.VDate.Value <= dtToDate.Value) || x.LCode.Contains(txtCustName.Text.Trim()) ||
+                                   (x.NetWt >= dFrom && x.NetWt <= dTo))
+                                orderby rcpt.VNo descending
+                                select rcpt);
+
             }           
             
             dgModify.Columns["ID"].Visible = false;

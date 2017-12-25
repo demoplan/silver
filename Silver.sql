@@ -112,6 +112,30 @@ remark	varChar(250)
 )
 
 
+--drop table Issue
+create table Issue(
+ID int identity primary key,
+VNo int,
+VDate datetime,
+CustType varchar(1),
+LCode varchar(50),
+GrossWt dec(16,3),
+NetWt dec(16,3),
+IssueTotal dec(16,2),
+SGST dec(16,2),
+CGST dec(16,2),
+NetTotal dec(16,2),
+Remarks varchar(max)
+)
+
+--drop table ExtraSettings
+create table ExtraSettings(
+ID int identity primary key,
+Settingkey varchar(20) not null,
+SettingValue varchar(20), 
+Remarks varchar(max)
+)
+
 
 
 

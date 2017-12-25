@@ -119,7 +119,7 @@ namespace StockManagement.UI
 
                 foreach (ReceiptModel rm in gridData)
                 {
-                    rm.ProdImage = File.Exists(rm.Photo) ? this.LoadImage(rm.Photo) : null;
+                    rm.ProdImage = File.Exists(rm.Photo) ? this.LoadImage(rm.Photo) : null;                    
                 }
 
                 Dictionary<string, string> dicCustType = new Dictionary<string, string>();
@@ -156,6 +156,7 @@ namespace StockManagement.UI
                 dgvSP.Columns["OutBillNo"].Visible = false;
                 dgvSP.Columns["OutType"].Visible = false;
                 dgvSP.Columns["StockInOut"].Visible = false;
+                dgvSP.Columns["ProdImage"].Resizable = DataGridViewTriState.True;
 
                 dgvSP.Columns["SeqNo"].HeaderText = "Seq No";
                 dgvSP.Columns["TDate"].HeaderText = "Date";
@@ -795,7 +796,7 @@ namespace StockManagement.UI
             Image img = null;
             using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
-                img = Image.FromStream(stream);
+                img = Image.FromStream(stream);//.GetThumbnailImage(60,60,null,IntPtr.Zero);                
                 stream.Dispose();
             }
             return img;
