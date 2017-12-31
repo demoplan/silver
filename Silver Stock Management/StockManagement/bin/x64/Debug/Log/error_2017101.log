@@ -1,2 +1,0 @@
-06:10 PM :: Error : Connection() : 'G:\Manish\Silver Stock Management\Silver Stock Management\StockManagement\bin\x64\Debug\Data\SM.accdb' is not a valid path. Make sure that the path name is spelled correctly and that you are connected to the server on which the file resides.
-06:35 PM :: Error : fill_ComboData() : The Microsoft Access database engine cannot find the input table or query 'TRANS'. Make sure it exists and that its name is spelled correctly.
