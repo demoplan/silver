@@ -29,5 +29,7 @@ namespace StockManagement.DAL.Model
         public Nullable<decimal> MakingRate { get; set; }
         public Nullable<decimal> TotalRate { get; set; }
         public Nullable<decimal> SellingRate { get; set; }
+        public string RefVouType { get; set; }
+        public Nullable<decimal> MetalRate { get; set; }
     }
 }

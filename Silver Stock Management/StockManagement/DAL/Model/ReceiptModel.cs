@@ -54,7 +54,8 @@ namespace StockManagement.DAL.Model
         
         public Nullable<decimal> MakingRate { get; set; }
 
-        
+        public Nullable<decimal> MetalRate { get; set; }
+
         public Nullable<decimal> TotalRate { get; set; }
 
         
@@ -84,6 +85,8 @@ namespace StockManagement.DAL.Model
         public string OutType { get; set; }
 
         //InOut Info  
-        public string StockInOut { get; set; }
+        public string StockInOut { get; set; }        
+
+        public string RefVouType { get; set; }
     }
 }

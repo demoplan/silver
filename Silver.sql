@@ -51,6 +51,8 @@ MakingRate dec(16,4),
 TotalRate dec(16,4),
 SellingRate dec(16,4)
 )
+alter table InOut add RefVouType varchar(1)
+alter table InOut add MetalRate dec(16,2)
 
 --drop table StockInfo
 create table StockInfo(
@@ -75,7 +77,9 @@ OutDate datetime,
 OutBillNo int,
 OutType varchar(10)
 )
-
+alter table StockInfo add RefVouType varchar(1)
+alter table StockInfo alter column OutType varchar(1)
+alter table StockInfo add MetalRate dec(16,2)
 -- drop table OrderDetail
 create table OrderDetail(
 TID int identity primary key,
@@ -121,7 +125,7 @@ CustType varchar(1),
 LCode varchar(50),
 GrossWt dec(16,3),
 NetWt dec(16,3),
-IssueTotal dec(16,2),
+MakingTotal dec(16,2),
 SGST dec(16,2),
 CGST dec(16,2),
 NetTotal dec(16,2),
@@ -136,6 +140,23 @@ SettingValue varchar(20),
 Remarks varchar(max)
 )
 
+--drop table Purchase
+create table Purchase(
+ID int identity primary key,
+VNo int,
+VDate datetime,
+CustType varchar(1),
+LCode varchar(50),
+GrossWt dec(16,3),
+NetWt dec(16,3),
+MakingTotal dec(16,2),
+MetalTotal dec(16,2),
+TotalAmount dec(16,2),
+SGST dec(16,2),
+CGST dec(16,2),
+NetTotal dec(16,2),
+Remarks varchar(max)
+)
 
 
 

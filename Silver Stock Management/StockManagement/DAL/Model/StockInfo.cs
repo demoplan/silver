@@ -34,5 +34,7 @@ namespace StockManagement.DAL.Model
         public Nullable<System.DateTime> OutDate { get; set; }
         public Nullable<int> OutBillNo { get; set; }
         public string OutType { get; set; }
+        public string RefVouType { get; set; }
+        public Nullable<decimal> MetalRate { get; set; }
     }
 }

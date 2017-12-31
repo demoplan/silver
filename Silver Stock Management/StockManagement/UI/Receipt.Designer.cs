@@ -170,6 +170,7 @@
             this.txtTotalGsWt.ReadOnly = true;
             this.txtTotalGsWt.Size = new System.Drawing.Size(105, 29);
             this.txtTotalGsWt.TabIndex = 1;
+            this.txtTotalGsWt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label15
             // 
@@ -196,6 +197,7 @@
             this.txtTotalMakingRate.ReadOnly = true;
             this.txtTotalMakingRate.Size = new System.Drawing.Size(107, 29);
             this.txtTotalMakingRate.TabIndex = 4;
+            this.txtTotalMakingRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTotalNetWt
             // 
@@ -204,6 +206,7 @@
             this.txtTotalNetWt.ReadOnly = true;
             this.txtTotalNetWt.Size = new System.Drawing.Size(105, 29);
             this.txtTotalNetWt.TabIndex = 2;
+            this.txtTotalNetWt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label19
             // 
@@ -475,7 +478,7 @@
             this.dgvSP.Location = new System.Drawing.Point(12, 100);
             this.dgvSP.Name = "dgvSP";
             this.dgvSP.ReadOnly = true;
-            this.dgvSP.RowTemplate.Height = 26;
+            this.dgvSP.RowTemplate.Height = 50;
             this.dgvSP.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSP.Size = new System.Drawing.Size(1223, 239);
             this.dgvSP.TabIndex = 32;
@@ -504,6 +507,7 @@
             this.pbSPAddImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbSPAddImage.TabIndex = 30;
             this.pbSPAddImage.TabStop = false;
+            this.pbSPAddImage.Visible = false;
             this.pbSPAddImage.Click += new System.EventHandler(this.pbSPAddImage_Click);
             // 
             // pbPhoto
@@ -516,6 +520,7 @@
             this.pbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPhoto.TabIndex = 27;
             this.pbPhoto.TabStop = false;
+            this.pbPhoto.Click += new System.EventHandler(this.pbPhoto_Click);
             // 
             // cmbJobeCode
             // 

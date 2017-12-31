@@ -20,6 +20,7 @@ namespace StockManagement.UI
         private int voucherNo = 0;
         private bool modify = false;
         private int seqNo = 0;
+        private string wtFormat = "0.000", rateFormat = "0.00";
         public Receipt(int vNo = 0, bool edit = false)
         {
             this.voucherNo = vNo;
@@ -119,7 +120,7 @@ namespace StockManagement.UI
 
                 foreach (ReceiptModel rm in gridData)
                 {
-                    rm.ProdImage = File.Exists(rm.Photo) ? this.LoadImage(rm.Photo) : null;                    
+                    rm.ProdImage = MiscUtils.LoadImage(rm.Photo);//File.Exists(rm.Photo) ? this.LoadImage(rm.Photo) : null;                    
                 }
 
                 Dictionary<string, string> dicCustType = new Dictionary<string, string>();
@@ -220,6 +221,7 @@ namespace StockManagement.UI
                     model.MetalType = Convert.ToString(cmbMetal.SelectedValue);
                     model.InType = "IN";
                     model.RefVNo = voucherNo;
+                    model.RefVouType = "R";
                     model.JobNo = Convert.ToInt32(cmbJobeCode.SelectedValue);
                     model.OrderNo = Convert.ToInt32(cmbOrderNo.SelectedValue);
                     model.Pcs = Convert.ToDecimal(txtPCs.Text.Trim());
@@ -243,6 +245,7 @@ namespace StockManagement.UI
                 model.MetalType = Convert.ToString(cmbMetal.SelectedValue);
                 model.InType = "IN";
                 model.RefVNo = 0;
+                model.RefVouType = "R";
                 model.JobNo = Convert.ToInt32(cmbJobeCode.SelectedValue);
                 model.OrderNo = Convert.ToInt32(cmbOrderNo.SelectedValue);
                 model.Pcs = Convert.ToDecimal(txtPCs.Text.Trim());
@@ -273,9 +276,9 @@ namespace StockManagement.UI
                 totalNetWt = totalNetWt + Convert.ToDecimal(model.NetWt);
                 totalRate = totalRate + Convert.ToDecimal(model.TotalRate);
             }
-            txtTotalGsWt.Text = Convert.ToString(totalGsWt);
-            txtTotalNetWt.Text = Convert.ToString(totalNetWt);
-            txtTotalMakingRate.Text = Convert.ToString(totalRate);
+            txtTotalGsWt.Text = totalGsWt.ToString(wtFormat);
+            txtTotalNetWt.Text = totalNetWt.ToString(wtFormat);
+            txtTotalMakingRate.Text = totalRate.ToString(rateFormat);
         }
 
         private void dgvSP_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
@@ -292,25 +295,25 @@ namespace StockManagement.UI
                 totalNetWt = totalNetWt + Convert.ToDecimal(model.NetWt);
                 totalRate = totalRate + Convert.ToDecimal(model.TotalRate);
             }
-            txtTotalGsWt.Text = Convert.ToString(totalGsWt);
-            txtTotalNetWt.Text = Convert.ToString(totalNetWt);
-            txtTotalMakingRate.Text = Convert.ToString(totalRate);
+            txtTotalGsWt.Text = totalGsWt.ToString(wtFormat);
+            txtTotalNetWt.Text = totalNetWt.ToString(wtFormat);
+            txtTotalMakingRate.Text = totalRate.ToString(rateFormat);
         }
 
         private void pbSPAddImage_Click(object sender, EventArgs e)
         {
-            string filename;
-            OpenFileDialog objOpenFD = new OpenFileDialog();
-            objOpenFD.Title = "Please select image for product.";
-            objOpenFD.Multiselect = false;
-            objOpenFD.Filter = "Image Files|*.jpg;*.jpeg;*.png;"; //"JPEG files| *.jpg | PNG files | *.png | GIF Files | *.gif | TIFF Files | *.tif | BMP Files | *.bmp";
-            if (objOpenFD.ShowDialog() == DialogResult.OK)
-            {
-                filename = objOpenFD.FileName;
-                //Image img = Image.FromFile(filename);
-                //pbPhoto.Image = img;
-                pbPhoto.ImageLocation = filename;
-            }
+            //string filename;
+            //OpenFileDialog objOpenFD = new OpenFileDialog();
+            //objOpenFD.Title = "Please select image for product.";
+            //objOpenFD.Multiselect = false;
+            //objOpenFD.Filter = "Image Files|*.jpg;*.jpeg;*.png;"; //"JPEG files| *.jpg | PNG files | *.png | GIF Files | *.gif | TIFF Files | *.tif | BMP Files | *.bmp";
+            //if (objOpenFD.ShowDialog() == DialogResult.OK)
+            //{
+            //    filename = objOpenFD.FileName;
+            //    //Image img = Image.FromFile(filename);
+            //    //pbPhoto.Image = img;
+            //    pbPhoto.ImageLocation = filename;
+            //}
         }
 
         private void cmbCustType_SelectedIndexChanged(object sender, EventArgs e)
@@ -343,7 +346,7 @@ namespace StockManagement.UI
                 dMakingRate = Convert.ToDecimal(txtMakingRate.Text.Trim());
             }
             dTotalRate = dNetWt * dMakingRate;
-            txtTotalRate.Text = dTotalRate.ToString();
+            txtTotalRate.Text = dTotalRate.ToString(rateFormat);
         }
 
         private void txtMakingRate_TextChanged(object sender, EventArgs e)
@@ -358,7 +361,7 @@ namespace StockManagement.UI
                 dMakingRate = Convert.ToDecimal(txtMakingRate.Text.Trim());
             }
             dTotalRate = dNetWt * dMakingRate;
-            txtTotalRate.Text = dTotalRate.ToString();
+            txtTotalRate.Text = dTotalRate.ToString(rateFormat);
         }
 
         private void Save()
@@ -393,6 +396,7 @@ namespace StockManagement.UI
                     model.MetalType = rcModel.MetalType;
                     model.TType = rcModel.InType;
                     model.RefVNo = voucherNo;
+                    model.RefVouType = rcModel.RefVouType;
                     model.JobNo = rcModel.JobNo;
                     model.OrderNo = rcModel.OrderNo;
                     model.Pcs = rcModel.Pcs;
@@ -414,6 +418,7 @@ namespace StockManagement.UI
                     model.MetalType = rcModel.MetalType;
                     model.InType = rcModel.InType;
                     model.RefVNo = voucherNo;
+                    model.RefVouType = rcModel.RefVouType;
                     model.JobNo = rcModel.JobNo;
                     model.OrderNo = rcModel.OrderNo;
                     model.Pcs = rcModel.Pcs;
@@ -425,12 +430,40 @@ namespace StockManagement.UI
                     model.Photo = rcModel.Photo;
 
                     //Add Image
-                    this.savePictureToFile(model);
+                    //this.savePictureToFile(model);
                     entities.StockInfoes.Add(model);
                 }
             }
             entities.SaveChanges();
             //}
+
+            #region Saving imgages
+            foreach (ReceiptModel rcModel in listSP)
+            {
+                if (!String.IsNullOrEmpty(rcModel.BarCode))
+                {
+                    var model = (from stk in entities.StockInfoes where stk.RefVNo == voucherNo && stk.RefVouType == "R" && stk.BarCode == rcModel.BarCode select stk).FirstOrDefault();
+                    if (model != null)
+                    {
+                        //Delete file for voucher
+                        string rootPath = Application.StartupPath;
+                        string relativePath = String.Format("\\Data\\Images\\{0}\\", model.TID);
+                        if (Directory.Exists(rootPath + relativePath))
+                            Directory.Delete(rootPath + relativePath, true);
+
+                        if (rcModel.ProdImage != null)
+                        {
+                            bool success = MiscUtils.SavePictureToFile(rcModel.ProdImage, rootPath + relativePath, model.TID);
+                            if (success)
+                            {
+                                model.Photo = string.Format("{0}{1}.jpg", relativePath, model.TID);
+                            }
+                        }
+                    }
+                }
+            }
+            entities.SaveChanges();
+            #endregion
         }
 
         private void SaveModify(int voucherNo)
@@ -469,6 +502,7 @@ namespace StockManagement.UI
                                 model.MetalType = rcModel.MetalType;
                                 model.TType = rcModel.InType;
                                 model.RefVNo = voucherNo;
+                                model.RefVouType = rcModel.RefVouType;
                                 model.JobNo = rcModel.JobNo;
                                 model.OrderNo = rcModel.OrderNo;
                                 model.Pcs = rcModel.Pcs;
@@ -490,6 +524,7 @@ namespace StockManagement.UI
                             model.MetalType = rcModel.MetalType;
                             model.TType = rcModel.InType;
                             model.RefVNo = voucherNo;
+                            model.RefVouType = rcModel.RefVouType;
                             model.JobNo = rcModel.JobNo;
                             model.OrderNo = rcModel.OrderNo;
                             model.Pcs = rcModel.Pcs;
@@ -518,6 +553,7 @@ namespace StockManagement.UI
                                 model.MetalType = rcModel.MetalType;
                                 model.InType = rcModel.InType;
                                 model.RefVNo = voucherNo;
+                                model.RefVouType = rcModel.RefVouType;
                                 model.JobNo = rcModel.JobNo;
                                 model.OrderNo = rcModel.OrderNo;
                                 model.Pcs = rcModel.Pcs;
@@ -529,7 +565,7 @@ namespace StockManagement.UI
                                 model.Photo = rcModel.Photo;
                                 
                                 //Add Image
-                                this.savePictureToFile(model);
+                                //this.savePictureToFile(model);
                                 entities.Entry(model).State = System.Data.Entity.EntityState.Modified;
                             }
                         }
@@ -544,6 +580,7 @@ namespace StockManagement.UI
                             model.MetalType = rcModel.MetalType;
                             model.InType = rcModel.InType;
                             model.RefVNo = voucherNo;
+                            model.RefVouType = rcModel.RefVouType;
                             model.JobNo = rcModel.JobNo;
                             model.OrderNo = rcModel.OrderNo;
                             model.Pcs = rcModel.Pcs;
@@ -555,7 +592,7 @@ namespace StockManagement.UI
                             model.Photo = rcModel.Photo;
 
                             //Add Image
-                            this.savePictureToFile(model);
+                            //this.savePictureToFile(model);
                             entities.StockInfoes.Add(model);
                         }
                         #endregion
@@ -564,6 +601,34 @@ namespace StockManagement.UI
             }
             entities.SaveChanges();
             //}
+
+            #region Saving imgages
+            foreach (ReceiptModel rcModel in listSP)
+            {
+                if (!String.IsNullOrEmpty(rcModel.BarCode))
+                {
+                    var model = (from stk in entities.StockInfoes where stk.RefVNo == voucherNo && stk.RefVouType == "R" && stk.BarCode == rcModel.BarCode select stk).FirstOrDefault();
+                    if (model != null)
+                    {
+                        //Delete file for voucher
+                        string rootPath = Application.StartupPath;
+                        string relativePath = String.Format("\\Data\\Images\\{0}\\", model.TID);
+                        if (Directory.Exists(rootPath + relativePath))
+                            Directory.Delete(rootPath + relativePath, true);
+
+                        if (rcModel.ProdImage != null)
+                        {
+                            bool success = MiscUtils.SavePictureToFile(rcModel.ProdImage, rootPath + relativePath, model.TID);
+                            if (success)
+                            {
+                                model.Photo = string.Format("{0}{1}.jpg", relativePath, model.TID);
+                            }
+                        }
+                    }
+                }
+            }
+            entities.SaveChanges();
+            #endregion
         }
 
         private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -578,11 +643,11 @@ namespace StockManagement.UI
                     this.cmbMetal.SelectedValue = Convert.ToInt32(dgvr.Cells["MetalType"].Value);
                     this.cmbOrderNo.SelectedValue = Convert.ToString(dgvr.Cells["OrderNo"].Value);
                     this.cmbProductCode.SelectedValue = Convert.ToString(dgvr.Cells["PCode"].Value);
-                    this.txtPCs.Text = Convert.ToString(dgvr.Cells["PCs"].Value);
-                    this.txtGsWt.Text = Convert.ToString(dgvr.Cells["GrossWt"].Value);
-                    this.txtNetWt.Text = Convert.ToString(dgvr.Cells["NetWt"].Value);
-                    this.txtMakingRate.Text = Convert.ToString(dgvr.Cells["MakingRate"].Value);
-                    this.txtSellingRate.Text = Convert.ToString(dgvr.Cells["SellingRate"].Value);
+                    this.txtPCs.Text = Convert.ToDecimal(dgvr.Cells["PCs"].Value).ToString(wtFormat);
+                    this.txtGsWt.Text = Convert.ToDecimal(dgvr.Cells["GrossWt"].Value).ToString(wtFormat);
+                    this.txtNetWt.Text = Convert.ToDecimal(dgvr.Cells["NetWt"].Value).ToString(wtFormat);
+                    this.txtMakingRate.Text = Convert.ToDecimal(dgvr.Cells["MakingRate"].Value).ToString(wtFormat);
+                    this.txtSellingRate.Text = Convert.ToDecimal(dgvr.Cells["SellingRate"].Value).ToString(wtFormat);
                     this.txtBarCode.Text = Convert.ToString(dgvr.Cells["BarCode"].Value);
                     this.pbPhoto.Image = (Image)dgvr.Cells["ProdImage"].Value;
                 }
@@ -674,7 +739,7 @@ namespace StockManagement.UI
                     var delRec = (from rec in entities.Receipts where rec.VNo == voucherNo select rec).FirstOrDefault();
                     entities.Entry(delRec).State = System.Data.Entity.EntityState.Deleted;
                     //delete InOut
-                    var delInOut = (from inout in entities.InOuts where inout.RefVNo == voucherNo select inout).ToList();
+                    var delInOut = (from inout in entities.InOuts where inout.RefVNo == voucherNo && inout.TType == "IN" select inout).ToList();
                     foreach (InOut io in delInOut)
                         entities.Entry(io).State = System.Data.Entity.EntityState.Deleted;
                     //delete StockInfo
@@ -735,71 +800,87 @@ namespace StockManagement.UI
         //    }
         //}
 
-        private void savePictureToFile(StockInfo model)
-        {
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            try
-            {
-                Image stkImage = File.Exists(model.Photo) ? Image.FromFile(model.Photo) : null;
-                if (stkImage == null)
-                {
-                    return;
-                }
+        //private void savePictureToFile(StockInfo model)
+        //{
+        //    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+        //    try
+        //    {
+        //        Image stkImage = File.Exists(model.Photo) ? Image.FromFile(model.Photo) : null;
+        //        if (stkImage == null)
+        //        {
+        //            return;
+        //        }
                 
-                string fileName = Guid.NewGuid().ToString();
-                Bitmap bitmap;
-                Image imgThumb;
-                int thumbsize = 0;
-                int newWidth = 0;
-                int newHeight = 0;
+        //        string fileName = Guid.NewGuid().ToString();
+        //        Bitmap bitmap;
+        //        Image imgThumb;
+        //        int thumbsize = 0;
+        //        int newWidth = 0;
+        //        int newHeight = 0;
 
-                string path = Application.StartupPath + String.Format("\\Data\\Images\\{0}\\",model.RefVNo);
-                //check for folder
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                fileName = String.Format(@"{0}{1}.jpg",path, fileName);
-                thumbsize = 300;
+        //        string path = Application.StartupPath + String.Format("\\Data\\Images\\{0}\\",model.RefVNo);
+        //        //check for folder
+        //        if (!Directory.Exists(path))
+        //        {
+        //            Directory.CreateDirectory(path);
+        //        }
+        //        fileName = String.Format(@"{0}{1}.jpg",path, fileName);
+        //        thumbsize = 300;
 
-                if (stkImage.Height > stkImage.Width)
-                {
-                    newHeight = Convert.ToInt32(thumbsize);
-                    newWidth = Convert.ToInt32(stkImage.Width * thumbsize / stkImage.Height);
-                }
-                else
-                {
-                    newWidth = Convert.ToInt32(thumbsize);
-                    newHeight = Convert.ToInt32(stkImage.Height * thumbsize / stkImage.Width);
-                }
+        //        if (stkImage.Height > stkImage.Width)
+        //        {
+        //            newHeight = Convert.ToInt32(thumbsize);
+        //            newWidth = Convert.ToInt32(stkImage.Width * thumbsize / stkImage.Height);
+        //        }
+        //        else
+        //        {
+        //            newWidth = Convert.ToInt32(thumbsize);
+        //            newHeight = Convert.ToInt32(stkImage.Height * thumbsize / stkImage.Width);
+        //        }
 
-                imgThumb = stkImage.GetThumbnailImage(newWidth, newHeight, null, new IntPtr());
-                bitmap = new Bitmap(imgThumb);
-                bitmap.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
-                bitmap = null;
-                model.Photo = fileName;
-               // entities.Entry(model).State = System.Data.Entity.EntityState.Modified;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + System.Environment.NewLine + ex.StackTrace);
-                throw new ArgumentException("Exception Occured : Image Saving Error");
-            }
-            finally
-            {
-                ms.Close();
-            }
-        }
+        //        imgThumb = stkImage.GetThumbnailImage(newWidth, newHeight, null, new IntPtr());
+        //        bitmap = new Bitmap(imgThumb);
+        //        bitmap.Save(fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+        //        bitmap = null;
+        //        model.Photo = fileName;
+        //       // entities.Entry(model).State = System.Data.Entity.EntityState.Modified;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message + System.Environment.NewLine + ex.StackTrace);
+        //        throw new ArgumentException("Exception Occured : Image Saving Error");
+        //    }
+        //    finally
+        //    {
+        //        ms.Close();
+        //    }
+        //}
 
-        private Image LoadImage(string path)
+        private void pbPhoto_Click(object sender, EventArgs e)
         {
-            Image img = null;
-            using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+            string filename;
+            OpenFileDialog objOpenFD = new OpenFileDialog();
+            objOpenFD.Title = "Please select image for product.";
+            objOpenFD.Multiselect = false;
+            objOpenFD.Filter = "Image Files|*.jpg;*.jpeg;*.png;"; //"JPEG files| *.jpg | PNG files | *.png | GIF Files | *.gif | TIFF Files | *.tif | BMP Files | *.bmp";
+            if (objOpenFD.ShowDialog() == DialogResult.OK)
             {
-                img = Image.FromStream(stream);//.GetThumbnailImage(60,60,null,IntPtr.Zero);                
-                stream.Dispose();
+                filename = objOpenFD.FileName;
+                //Image img = Image.FromFile(filename);
+                //pbPhoto.Image = img;
+                pbPhoto.ImageLocation = filename;
             }
-            return img;
         }
+
+        //private Image LoadImage(string path)
+        //{
+        //    Image img = null;
+        //    using (FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+        //    {
+        //        img = Image.FromStream(stream);//.GetThumbnailImage(60,60,null,IntPtr.Zero);                
+        //        stream.Dispose();
+        //    }
+        //    return img;
+        //}
     }
 }

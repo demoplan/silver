@@ -42,7 +42,7 @@ namespace StockManagement
         }
         private void TransactionEntry(object sender, EventArgs e)
         {
-            Purchase purchaseForm = new Purchase();
+            PurchaseNew purchaseForm = new PurchaseNew();
             purchaseForm.Show();
         }
 

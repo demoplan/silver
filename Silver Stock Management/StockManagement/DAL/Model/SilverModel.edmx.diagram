@@ -14,6 +14,8 @@
         <EntityTypeShape EntityType="SilverModel.Receipt" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SilverModel.StockInfo" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SilverModel.Issue" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SilverModel.ExtraSetting" Width="1.5" PointX="9.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SilverModel.Purchase" Width="1.5" PointX="9.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

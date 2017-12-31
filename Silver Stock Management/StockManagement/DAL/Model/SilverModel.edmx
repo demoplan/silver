@@ -35,6 +35,15 @@
           <Property Name="metalRate" Type="decimal" Precision="16" Scale="3" />
           <Property Name="remark" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="ExtraSettings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Settingkey" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SettingValue" Type="varchar" MaxLength="20" />
+          <Property Name="Remarks" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="InOut">
           <Key>
             <PropertyRef Name="TID" />
@@ -54,6 +63,8 @@
           <Property Name="MakingRate" Type="decimal" Precision="16" Scale="4" />
           <Property Name="TotalRate" Type="decimal" Precision="16" Scale="4" />
           <Property Name="SellingRate" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="RefVouType" Type="varchar" MaxLength="1" />
+          <Property Name="MetalRate" Type="decimal" Precision="16" Scale="2" />
         </EntityType>
         <EntityType Name="Issue">
           <Key>
@@ -64,12 +75,12 @@
           <Property Name="VDate" Type="datetime" />
           <Property Name="CustType" Type="varchar" MaxLength="1" />
           <Property Name="LCode" Type="varchar" MaxLength="50" />
-          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="4" />
-          <Property Name="NetWt" Type="decimal" Precision="16" Scale="4" />
-          <Property Name="IssueTotal" Type="decimal" Precision="16" Scale="4" />
-          <Property Name="SGST" Type="decimal" Precision="16" Scale="4" />
-          <Property Name="CGST" Type="decimal" Precision="16" Scale="4" />
-          <Property Name="NetTotal" Type="decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="3" />
+          <Property Name="NetWt" Type="decimal" Precision="16" Scale="3" />
+          <Property Name="MakingTotal" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="SGST" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="CGST" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="NetTotal" Type="decimal" Precision="16" Scale="2" />
           <Property Name="Remarks" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="MetalM">
@@ -105,6 +116,25 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemCode" Type="varchar" MaxLength="250" />
           <Property Name="PName" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VNo" Type="int" />
+          <Property Name="VDate" Type="datetime" />
+          <Property Name="CustType" Type="varchar" MaxLength="1" />
+          <Property Name="LCode" Type="varchar" MaxLength="50" />
+          <Property Name="GrossWt" Type="decimal" Precision="16" Scale="3" />
+          <Property Name="NetWt" Type="decimal" Precision="16" Scale="3" />
+          <Property Name="MakingTotal" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="MetalTotal" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="TotalAmount" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="SGST" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="CGST" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="NetTotal" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="Remarks" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
@@ -143,16 +173,20 @@
           <Property Name="Photo" Type="varchar" MaxLength="200" />
           <Property Name="OutDate" Type="datetime" />
           <Property Name="OutBillNo" Type="int" />
-          <Property Name="OutType" Type="varchar" MaxLength="10" />
+          <Property Name="OutType" Type="varchar" MaxLength="1" />
+          <Property Name="RefVouType" Type="varchar" MaxLength="1" />
+          <Property Name="MetalRate" Type="decimal" Precision="16" Scale="2" />
         </EntityType>
         <EntityContainer Name="SilverModelStoreContainer">
           <EntitySet Name="CustomerM" EntityType="Self.CustomerM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerOrderInfo" EntityType="Self.CustomerOrderInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExtraSettings" EntityType="Self.ExtraSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InOut" EntityType="Self.InOut" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Issue" EntityType="Self.Issue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MetalM" EntityType="Self.MetalM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductM" EntityType="Self.ProductM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockInfo" EntityType="Self.StockInfo" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -209,6 +243,8 @@
           <Property Name="MakingRate" Type="Decimal" Precision="16" Scale="4" />
           <Property Name="TotalRate" Type="Decimal" Precision="16" Scale="4" />
           <Property Name="SellingRate" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="RefVouType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MetalRate" Type="Decimal" Precision="16" Scale="2" />
         </EntityType>
         <EntityType Name="MetalM">
           <Key>
@@ -281,7 +317,9 @@
           <Property Name="Photo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="OutDate" Type="DateTime" Precision="3" />
           <Property Name="OutBillNo" Type="Int32" />
-          <Property Name="OutType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="OutType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="RefVouType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="MetalRate" Type="Decimal" Precision="16" Scale="2" />
         </EntityType>
         <EntityContainer Name="SilverEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CustomerMs" EntityType="Self.CustomerM" />
@@ -293,6 +331,8 @@
           <EntitySet Name="Receipts" EntityType="Self.Receipt" />
           <EntitySet Name="StockInfoes" EntityType="Self.StockInfo" />
           <EntitySet Name="Issues" EntityType="SilverModel.Issue" />
+          <EntitySet Name="ExtraSettings" EntityType="SilverModel.ExtraSetting" />
+          <EntitySet Name="Purchases" EntityType="SilverModel.Purchase" />
         </EntityContainer>
         <EntityType Name="Issue">
           <Key>
@@ -303,12 +343,40 @@
           <Property Name="VDate" Type="DateTime" Precision="3" />
           <Property Name="CustType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="4" />
-          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="4" />
-          <Property Name="IssueTotal" Type="Decimal" Precision="16" Scale="4" />
-          <Property Name="SGST" Type="Decimal" Precision="16" Scale="4" />
-          <Property Name="CGST" Type="Decimal" Precision="16" Scale="4" />
-          <Property Name="NetTotal" Type="Decimal" Precision="16" Scale="4" />
+          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="3" />
+          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="3" />
+          <Property Name="SGST" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="CGST" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="NetTotal" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MakingTotal" Type="Decimal" Precision="16" Scale="2" />
+        </EntityType>
+        <EntityType Name="ExtraSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Settingkey" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SettingValue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VNo" Type="Int32" />
+          <Property Name="VDate" Type="DateTime" Precision="3" />
+          <Property Name="CustType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="LCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GrossWt" Type="Decimal" Precision="16" Scale="3" />
+          <Property Name="NetWt" Type="Decimal" Precision="16" Scale="3" />
+          <Property Name="MakingTotal" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="MetalTotal" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="SGST" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="CGST" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="NetTotal" Type="Decimal" Precision="16" Scale="2" />
           <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
@@ -352,6 +420,8 @@
           <EntitySetMapping Name="InOuts">
             <EntityTypeMapping TypeName="SilverModel.InOut">
               <MappingFragment StoreEntitySet="InOut">
+                <ScalarProperty Name="MetalRate" ColumnName="MetalRate" />
+                <ScalarProperty Name="RefVouType" ColumnName="RefVouType" />
                 <ScalarProperty Name="TID" ColumnName="TID" />
                 <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
                 <ScalarProperty Name="TDate" ColumnName="TDate" />
@@ -425,6 +495,8 @@
           <EntitySetMapping Name="StockInfoes">
             <EntityTypeMapping TypeName="SilverModel.StockInfo">
               <MappingFragment StoreEntitySet="StockInfo">
+                <ScalarProperty Name="MetalRate" ColumnName="MetalRate" />
+                <ScalarProperty Name="RefVouType" ColumnName="RefVouType" />
                 <ScalarProperty Name="TID" ColumnName="TID" />
                 <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
                 <ScalarProperty Name="TDate" ColumnName="TDate" />
@@ -451,11 +523,41 @@
           <EntitySetMapping Name="Issues">
             <EntityTypeMapping TypeName="SilverModel.Issue">
               <MappingFragment StoreEntitySet="Issue">
+                <ScalarProperty Name="MakingTotal" ColumnName="MakingTotal" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="NetTotal" ColumnName="NetTotal" />
                 <ScalarProperty Name="CGST" ColumnName="CGST" />
                 <ScalarProperty Name="SGST" ColumnName="SGST" />
-                <ScalarProperty Name="IssueTotal" ColumnName="IssueTotal" />
+                <ScalarProperty Name="NetWt" ColumnName="NetWt" />
+                <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
+                <ScalarProperty Name="LCode" ColumnName="LCode" />
+                <ScalarProperty Name="CustType" ColumnName="CustType" />
+                <ScalarProperty Name="VDate" ColumnName="VDate" />
+                <ScalarProperty Name="VNo" ColumnName="VNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExtraSettings">
+            <EntityTypeMapping TypeName="SilverModel.ExtraSetting">
+              <MappingFragment StoreEntitySet="ExtraSettings">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+                <ScalarProperty Name="Settingkey" ColumnName="Settingkey" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="SilverModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="NetTotal" ColumnName="NetTotal" />
+                <ScalarProperty Name="CGST" ColumnName="CGST" />
+                <ScalarProperty Name="SGST" ColumnName="SGST" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="MetalTotal" ColumnName="MetalTotal" />
+                <ScalarProperty Name="MakingTotal" ColumnName="MakingTotal" />
                 <ScalarProperty Name="NetWt" ColumnName="NetWt" />
                 <ScalarProperty Name="GrossWt" ColumnName="GrossWt" />
                 <ScalarProperty Name="LCode" ColumnName="LCode" />

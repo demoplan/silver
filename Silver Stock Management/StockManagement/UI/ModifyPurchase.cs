@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace StockManagement.UI
 {
-    public partial class ModifyIssue : Form
+    public partial class ModifyPurchase : Form
     {
         DAL.Model.SilverEntities entities;
 
-        public ModifyIssue()
+        public ModifyPurchase()
         {
             InitializeComponent();
             Reset();
@@ -30,12 +30,12 @@ namespace StockManagement.UI
                 decimal dFrom = 0, dTo = 0;
                 decimal.TryParse(txtNetWtFrom.Text,out dFrom);
                 decimal.TryParse(txtNetWtTo.Text,out dTo);
-                var issues = (from issue in entities.Issues
+                var purchases = (from purchase in entities.Purchases
                                    .Where(x => (x.VDate.Value >= dtFromDate.Value && x.VDate.Value <= dtToDate.Value) || x.LCode.Contains(txtCustName.Text.Trim()) ||
                                    (x.NetWt >= dFrom && x.NetWt <= dTo))
-                                orderby issue.VNo descending
-                                select issue);
-                dgModify.DataSource = issues.ToList();
+                                orderby purchase.VNo descending
+                                select purchase);
+                dgModify.DataSource = purchases.ToList();
             }
 
             dgModify.Columns["ID"].Visible = false;
@@ -52,7 +52,7 @@ namespace StockManagement.UI
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow dgvr = dgModify.Rows[e.RowIndex];
-                Issue objReceipt = new Issue(Convert.ToInt32(dgvr.Cells["VNo"].Value), true);
+                PurchaseNew objReceipt = new PurchaseNew(Convert.ToInt32(dgvr.Cells["VNo"].Value), true);
 
                 this.Dispose();
                 objReceipt.ShowDialog();                
@@ -77,8 +77,8 @@ namespace StockManagement.UI
             dtFromDate.Value = DateTime.Today.AddDays(-10);
             using (entities = new DAL.Model.SilverEntities())
             {
-                var issues = (from issue in entities.Issues orderby issue.VNo descending select issue).Take(10);
-                dgModify.DataSource = issues.ToList();
+                var purchases = (from purchase in entities.Purchases orderby purchase.VNo descending select purchase).Take(10);
+                dgModify.DataSource = purchases.ToList();
             }            
         }
 
